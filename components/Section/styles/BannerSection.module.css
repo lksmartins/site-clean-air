@@ -10,10 +10,6 @@
   background-size: cover;
 }
 
-.bannerSection .bannerMobile {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   .bannerSection {
     height: 50vh;
@@ -22,14 +18,7 @@
 
 @media screen and (max-width: 425px) {
   .bannerSection {
-    height: 45vh;
-  }
-  .bannerSection .banner {
-    display: none;
-  }
-  .bannerSection .bannerMobile {
-    display: block;
-    outline: 5px solid red;
+    height: 40vh;
   }
 }
 
@@ -41,7 +30,7 @@
 
 @media screen and (max-width: 320px) {
   .bannerSection {
-    height: 30vh;
+    height: 40vh;
   }
 }
 /*# sourceMappingURL=BannerSection.module.css.map */

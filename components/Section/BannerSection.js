@@ -7,7 +7,7 @@ import bannerMobile from '../../public/homeBannerMobile.png'
 export default function BannerSection() {
     return(
         <div className={styles.bannerSection}>
-            <Image
+            {/* <Image
                 src={banner}
                 className={styles.banner}
                 layout="fill"
@@ -19,7 +19,7 @@ export default function BannerSection() {
                 className={styles.bannerMobile}
                 layout="fill"
                 objectFit="cover"
-                alt="Clean Air banner" />
+                alt="Clean Air banner" /> */}
         </div>
     )
 }

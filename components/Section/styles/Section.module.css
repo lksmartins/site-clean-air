@@ -1,0 +1,51 @@
+.section {
+  width: 100%;
+}
+
+.section .container {
+  padding: 1rem;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.section .container.fluid {
+  width: 100%;
+  max-width: unset;
+}
+
+.section .container.grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+.section .container.grid.col4 {
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.section .container.gap4 {
+  gap: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .section .container {
+    max-width: unset !important;
+    text-align: center;
+  }
+  .section .container.grid {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .section .container.gap4 {
+    gap: 4rem;
+  }
+}
+/*# sourceMappingURL=Section.module.css.map */

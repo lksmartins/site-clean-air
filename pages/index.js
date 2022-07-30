@@ -1,15 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Section from '../components/Section/Section'
 import sectionStyles from '../components/Section/styles/Section.module.css'
+import BannerSection from '../components/Section/BannerSection'
 import Bubble from '../components/Bubble/Bubble'
 import BubbleContent from '../lib/bubbles.json'
+import svgProjetos from '../public/bubbles/projetos.svg'
+import svgManutencao from '../public/bubbles/manutencao.svg'
+import svgInstalacao from '../public/bubbles/instalacao.svg'
+import svgVendas from '../public/bubbles/vendas.svg'
 import PortfolioSection from '../components/Cta/portfolio'
 import NewsletterSection from '../components/Cta/newsletter'
 import Footer from '../components/Footer/Footer'
 
 export default function Home() {
+
+    const bubbleIcons = {
+        'projetos': svgProjetos,
+        'manutencao': svgManutencao,
+        'instalacao': svgInstalacao,
+        'vendas': svgVendas
+    }
 
     return (
         <>
@@ -20,9 +31,11 @@ export default function Home() {
 
             <main>
 
+                <BannerSection/>
+
                 <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col4} ${sectionStyles.gap4}`}>
                     {BubbleContent.map(item=>{
-                        const img = <Image src={`/bubbles/${item.icon}.png`} layout="fill" objectFit="contain" alt={item.title} />
+                        const img = <Image src={bubbleIcons[item.icon]} layout="fill" objectFit="contain" alt={item.title} />
                         return <Bubble key={item.icon} title={item.title} icon={img}>{item.text}</Bubble>
                     })}
                 </Section>

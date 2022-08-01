@@ -11,7 +11,6 @@ import svgInstalacao from '../public/bubbles/instalacao.svg'
 import svgVendas from '../public/bubbles/vendas.svg'
 import PortfolioSection from '../components/Cta/portfolio'
 import NewsletterSection from '../components/Cta/newsletter'
-import Footer from '../components/Footer/Footer'
 
 export default function Home() {
 
@@ -44,9 +43,7 @@ export default function Home() {
 
                 <NewsletterSection/>
 
-            </main>
-
-            <Footer/>
+            </main>            
             
         </>
     )

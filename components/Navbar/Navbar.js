@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from './styles/navbar.module.css'
 import menuItems from '../../lib/menuItems.json'
 import SearchBar from './SearchBar'
@@ -8,10 +8,16 @@ import logoBranco from '../../public/logo-branco.png'
 import logoMidea from '../../public/midea.png'
 import logoCarrier from '../../public/carrier.png'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function Navbar() {
 
+    const router = useRouter()
     const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+    useEffect(()=>{
+        setShowMobileMenu(false)
+    },[router])
 
     return (
     <>

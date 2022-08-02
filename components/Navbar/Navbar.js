@@ -71,7 +71,7 @@ export default function Navbar() {
                     <div className={styles.menu}>
                         {
                             menuItems.map(item => {
-                                return <div className={styles.menuItem} key={item.id}>{item.text}</div>
+                                return <div className={styles.menuItem} key={item.id}><Link href={item.url}>{item.text}</Link></div>
                             })
                         }
                         <SearchBar />

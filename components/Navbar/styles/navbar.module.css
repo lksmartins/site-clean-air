@@ -180,6 +180,15 @@
   gap: 1rem;
 }
 
+.navbar .bottomBar .container .menu .menuItem a {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar .bottomBar .container .menu .menuItem a:hover {
+  color: #00A3E0;
+}
+
 .navbar .bottomBarMobile {
   display: none;
   background-color: #001E60;

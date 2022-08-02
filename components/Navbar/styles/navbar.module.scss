@@ -49,6 +49,7 @@
             bottom: 2rem;
             *{font-size: 1.75rem !important;}
         }
+        
     }
 }
 
@@ -136,6 +137,15 @@
                 justify-content: flex-end;
                 align-items: center;
                 gap: 1rem;
+
+                .menuItem{
+                    a{
+                        transition:all 0.3s ease;
+                        &:hover{
+                            color: $lightAccent;
+                        }
+                    }
+                }
             }
         }
     }

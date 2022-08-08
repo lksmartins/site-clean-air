@@ -17,5 +17,6 @@ a {
 
 main {
   margin-top: 10.3rem;
+  min-height: 100vh;
 }
 /*# sourceMappingURL=globals.css.map */

@@ -1,7 +1,17 @@
 /** @type {import('next').NextConfig} */
 
+require('dotenv').config()
+
 const nextConfig = {
   reactStrictMode: true,
+  
+}
+
+const env = {
+  env: {
+    ENV: process.env.ENV,
+    NEXT_PUBLIC_RECAPTCHA_KEY: process.env.RECAPTCHA_KEY
+  }
 }
 
 const webpack = {
@@ -15,4 +25,4 @@ const webpack = {
   }
 }
 
-module.exports = [nextConfig, webpack]
+module.exports = [[nextConfig, webpack, env]]

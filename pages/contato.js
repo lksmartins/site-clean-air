@@ -4,7 +4,7 @@ import Section from '../components/Section/Section'
 import BannerSection from '../components/Section/BannerSectionTest'
 import banner from '../public/contatoBanner.png'
 import ContactForm from '../components/ContactForm/ContactForm'
-import Image from 'next/image'
+import { findValueById, findFilenameById } from '../lib/helper'
 
 export default function Contato() {
 
@@ -60,22 +60,21 @@ export default function Contato() {
                             fields={fields}
                             apiBody={(state)=>{
                                     return {  
-                                        action: 'signin',
+                                        recipient: 'martins@chavemestra.net',
+                                        name: findValueById(state, 'name'), 
                                         email: findValueById(state, 'email'), 
-                                        password: findValueById(state, 'senha'),
+                                        message: findValueById(state, 'message'),
+                                        curriculum: findFilenameById(state, 'curriculum')
                                     }
                                 }
                             }
-                            errorMessage="Houve um erro na tentativa de de fazer seu login. Recarregue a página e tente novamente."
-                            successMessage="Login feito com sucesso!"
+                            errorMessage="Houve um erro na tentativa de enviar seu email. Recarregue a página e tente novamente."
+                            successMessage="Email enviado com sucesso!"
                             onSuccess={(response)=>{
-                                setUser(response.user)
-                                if( 'onSuccess' in props ){
-                                    props.onSuccess()
-                                }
+                                
                             }}
 
-                            footerLeftEl=""
+                            footerLeftEl={null}
                             buttonText="Enviar"
                         />
                     </div>

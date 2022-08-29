@@ -12,6 +12,7 @@ specifiers:
   eslint: 8.18.0
   eslint-config-next: 12.1.6
   next: 12.1.6
+  nodemailer: ^6.7.8
   react: 18.2.0
   react-dom: 18.2.0
   react-google-recaptcha: ^2.1.0
@@ -27,6 +28,7 @@ dependencies:
   babel-plugin-macros: 3.1.0
   dotenv: 16.0.1
   next: 12.1.6_pbqkqtl3ytrxhl67w6o5ecjene
+  nodemailer: 6.7.8
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-google-recaptcha: 2.1.0_react@18.2.0
@@ -3077,6 +3079,11 @@ packages:
 
   /node-releases/2.0.6:
     resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
+    dev: false
+
+  /nodemailer/6.7.8:
+    resolution: {integrity: sha512-2zaTFGqZixVmTxpJRCFC+Vk5eGRd/fYtvIR+dl5u9QXLTQWGIf48x/JXvo58g9sa0bU6To04XUv554Paykum3g==}
+    engines: {node: '>=6.0.0'}
     dev: false
 
   /nth-check/2.1.1:

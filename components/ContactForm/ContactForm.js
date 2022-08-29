@@ -2,16 +2,6 @@ import React, { useState, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import PropTypes from 'prop-types'
 import styles from './styles/ContactForm.module.css'
-
-/*
-    Where its being used:
-    -Footer
-    -ihunter-sobre
-    -LoginForm
-    -SignupForm
-    -ForgotPassword
-*/
-
 export default function Form(props) {
 
     const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
@@ -53,12 +43,12 @@ export default function Form(props) {
         setSentMessage('')
         setError(false)
 
-        const recaptchaValue = recaptchaRef.current.getValue()
+        /* const recaptchaValue = recaptchaRef.current.getValue()
 
         if( recaptchaValue=='' ){
           setRecaptchaHelp(true)
           return false
-        }
+        } */
 
         let filledFields = 0
         let requiredFields = 0
@@ -97,36 +87,36 @@ export default function Form(props) {
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
-        fetch(process.env.API_URL, {
+        fetch('/api/sendEmail', {
             method: 'POST',
             body: JSON.stringify({...apiBody(state), token: process.env.API_TOKEN})
         })
         .then(res=>{
-            res.json().then(response=>{
-                setButtonDisabled(false)
-                setSendIcon(defaultSendIcon)
-    
-                if( !response.status || response.status != 'ok' ){
-                    setError(true)
-                    setSentMessage(response.msg || errorMessage)
-                }
-                else{
+            if( res.status == 200 ){
+                res.json().then(response=>{
+                    setButtonDisabled(false)
+                    setSendIcon(defaultSendIcon)
+        
                     setError(false)
                     setSentMessage(successMessage)
     
                     onSuccess(response)
-                }
-            })
-            .catch(error=>{
-                console.error('error on .json()')
-                console.error(error)
-                console.log(apiBody)
-                
-                setButtonDisabled(false)
-                setSendIcon(defaultSendIcon)
+                })
+                .catch(error=>{
+                    console.error('error on .json()')
+                    console.error(error)
+                    console.log(apiBody)
+                    
+                    setButtonDisabled(false)
+                    setSendIcon(defaultSendIcon)
+                    setError(true)
+                    setSentMessage(errorMessage)
+                })
+            }
+            else{
                 setError(true)
-                setSentMessage(errorMessage)
-            })
+                setSentMessage('Houve um erro inesperado. Tente novamente.')
+            }    
         })
         .catch(error=>{
             console.error('error on fetch()')
@@ -150,16 +140,16 @@ export default function Form(props) {
                     return (
                         <div key={item.id} className={`${styles.inputGroup} ${item.type == 'checkbox' ? styles.inline : null}`}>
                             <label>{item.name}</label>
-                            <input name={item.id} disabled={item.disabled && item.disabled} type={item.type} onChange={handleInputChange} value={item.value && item.value}/>
+                            <input id={`formId_${item.id}`} name={item.id} disabled={item.disabled && item.disabled} type={item.type} onChange={handleInputChange} value={item.value && item.value}/>
                         </div>
                     )
                 })}
 
                 <div className={`${styles.inputGroup} ${styles.recaptcha}`}>
-                    <ReCAPTCHA
+                    {/* <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
-                    />
+                    /> */}
                     <span className={recaptchaHelp ? styles.show : styles.hidden}>Não esqueça de fazer o reCAPTCHA</span>
                 </div>
 
@@ -186,6 +176,6 @@ Form.propTypes = {
     errorMessage: PropTypes.string, 
     successMessage: PropTypes.string, 
     onSuccess: PropTypes.func,
-    footerLeftEl: PropTypes.element,
+    footerLeftEl: PropTypes.element || null,
     buttonText: PropTypes.string,
 }

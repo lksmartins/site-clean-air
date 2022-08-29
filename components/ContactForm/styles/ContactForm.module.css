@@ -21,6 +21,7 @@
 
 .form .container .inputGroup {
   width: 100%;
+  max-width: 302px;
   margin-bottom: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -50,7 +51,7 @@
 .form .container .inputGroup input {
   background: #fff;
   border: 1px solid #001E60;
-  border-radius: 4px;
+  border-radius: 3px;
   outline: none;
   padding: 0.75rem 1rem;
   margin: 0;
@@ -169,6 +170,9 @@
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
+  width: 100%;
+  max-width: 302px;
+  margin: 0 auto;
 }
 
 .form .container .messageGroup.hidden {
@@ -223,7 +227,8 @@
   outline: none;
   font-weight: 800;
   font-size: 1rem !important;
-  width: 70%;
+  width: 100%;
+  max-width: 302px;
 }
 
 .form .container .buttonGroup button * {

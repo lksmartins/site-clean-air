@@ -10,7 +10,8 @@ import svgManutencao from '../public/bubbles/manutencao.svg'
 import svgInstalacao from '../public/bubbles/instalacao.svg'
 import svgVendas from '../public/bubbles/vendas.svg'
 import PortfolioSection from '../components/Cta/portfolio'
-import NewsletterSection from '../components/Cta/newsletter'
+import Form from '../components/NewsForm'
+import {findValueById} from '../lib/helper'
 
 export default function Home() {
 
@@ -20,6 +21,10 @@ export default function Home() {
         'instalacao': svgInstalacao,
         'vendas': svgVendas
     }
+
+    const fields = [
+        {id:'email', name:'E-mail', type:'email', value:''},
+    ]
 
     return (
         <>
@@ -41,7 +46,36 @@ export default function Home() {
 
                 <PortfolioSection/>
 
-                <NewsletterSection/>
+                <div className="container py-5 my-4">
+                    <div className="row">
+                        <div className="col-lg-6 col-sm-12">
+                            <div className="w-100 h-100">
+                                <img src="/newsletter.png" alt="ar condicionado central midea"/>
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-sm-12 text-center">
+                            <h3>Não perca nossas atualizações</h3>
+                            <div className="mb-3">Preencha o campo abaixo e receba novidades por e-mail.</div>
+                            <Form
+                                fields={fields}
+                                apiBody={(state)=>{
+                                        return {  
+                                            email: findValueById(state, 'email')
+                                        }
+                                    }
+                                }
+                                errorMessage="Houve um erro na tentativa de enviar seu email. Recarregue a página e tente novamente."
+                                successMessage="Email enviado com sucesso!"
+                                onSuccess={(response)=>{
+                                    console.log("sucesso", response)
+                                }}
+    
+                                footerLeftEl={null}
+                                buttonText="Enviar"
+                            />
+                        </div>
+                    </div>
+                </div>
 
             </main>            
             

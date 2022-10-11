@@ -4,6 +4,15 @@ import Section from '../Section/Section'
 import Image from 'next/image'
 
 export default function newsletter() {
+
+    const saveEmail = async ()=>{
+
+        const email = document.getElementById('newsEmail').value
+
+        console.log(`email`, email)
+
+    }
+
     return(
         <Section className={styles.newsletter}>
             
@@ -19,9 +28,9 @@ export default function newsletter() {
                 <div className={styles.content}>
                     <div className={styles.title}>Não perca nossas atualizações</div>
                     <div className={styles.text}>Preencha o campo abaixo e receba novidades por e-mail.</div>
-                    <div className={styles.field}>
-                        <input type="email" placeholder="E-mail"/>
-                        <button>Enviar</button>
+                    <div className={styles.field}> 
+                        <input id="newsEmail" type="email" placeholder="E-mail"/>
+                        <button onClick={saveEmail}>Enviar</button>
                     </div>
                 </div>
             </div>

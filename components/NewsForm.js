@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import PropTypes from 'prop-types'
-import styles from './styles/ContactForm.module.css'
+import styles from './ContactForm/styles/ContactForm.module.css'
+
 export default function Form(props) {
 
     const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
@@ -17,6 +18,8 @@ export default function Form(props) {
 
     const [ recaptchaHelp, setRecaptchaHelp ] = useState(false)
     const recaptchaRef = useRef()
+
+    const backendDomain = 'https://clean-air-backend-production.up.railway.app'
 
     function handleInputChange(e) {
 
@@ -43,7 +46,7 @@ export default function Form(props) {
         setSentMessage('')
         setError(false)
 
-        if( window.hostname != 'localhost'){
+        if( window.location.hostname != 'localhost'){
             const recaptchaValue = recaptchaRef.current.getValue()
 
             if( recaptchaValue=='' ){
@@ -85,13 +88,13 @@ export default function Form(props) {
 
         // load button
         setSendIcon('fas fa-spin fa-spinner')
-        setButtonDisabled(true)
+        //setButtonDisabled(true)
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
-        fetch('/api/sendEmail', {
+        fetch(`/api/saveEmail`, {
             method: 'POST',
-            body: JSON.stringify({...apiBody(state), token: process.env.API_TOKEN})
+            body: JSON.stringify(apiBody(state))
         })
         .then(res=>{
             if( res.status == 200 ){
@@ -134,7 +137,7 @@ export default function Form(props) {
     }
 
     return(
-        <form className={styles.form} onSubmit={handleSubmit} encType="multipart/form-data" >
+        <form className={styles.form} onSubmit={handleSubmit}>
 
             <div className={styles.container}>
 
@@ -149,7 +152,6 @@ export default function Form(props) {
                                 type={item.type}  
                                 onChange={handleInputChange} 
                                 value={item.value && item.value} 
-                                accept={item.type=="file"?"image/*, .pdf, .doc, .docx":"*" }
                                 />
                         </div>
                     )

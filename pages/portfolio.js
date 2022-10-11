@@ -5,6 +5,7 @@ import sectionStyles from '../components/Section/styles/Section.module.css'
 import svg1 from '../public/portfolio/icon1.svg'
 import svg2 from '../public/portfolio/icon2.svg'
 import svg3 from '../public/portfolio/icon3.svg'
+import Link from 'next/link'
 
 const backendDomain = 'https://clean-air-backend-production.up.railway.app'
 
@@ -28,7 +29,7 @@ export async function getServerSideProps() {
 
 const PortfolioLink = (props)=>{
 
-    return <a href={backendDomain+props.url} target="_blank" download="clean_air_portfolio.pdf" className="link" rel="noreferrer">{props.children}</a>
+    return <Link href={backendDomain+props.url}><a target="_blank" download="clean_air_portfolio.pdf" className="link" rel="noreferrer">{props.children}</a></Link>
 
 }
 

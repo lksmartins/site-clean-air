@@ -40,32 +40,36 @@ export default function Home() {
 
                 <BannerSection/>
 
-                <Section id="history" className="d-flex">
-                    <div>
-                        <h2>Nossa História</h2>
-                        <p>
-                            A Clean Air surgiu de um sonho de infância da família
-                            Maraschin, o qual se concretizou no ano de 2010. Apesar
-                            de todos os desafios, os irmãos Clarice, João, Cristina e 
-                            Clarita não apenas criaram uma empresa do ramo da 
-                            refrigeração, como também a estabeleceram no mercado, 
-                            transformando-a em um sólido nome do segmento. 
-                            Através de muito empenho, dedicação, formação e 
-                            qualificação profissional de toda a equipe, a Clean Air, cada 
-                            vez mais, tem adquirido reconhecimento pelos serviços 
-                            prestados, conquistando uma vasta carteira de clientes.
-                        </p>
-                        <p>
-                            A Clean Air trabalha com equipamentos, mas com enfoque 
-                            no bem estar das pessoas, e foi esse aspecto o responsável
-                            pelo fato de uma empresa originada por meio do sonho de 
-                            uma família, hoje colaborar com a realização dos sonhos de 
-                            outras tantas. 
-                        </p>
-                    </div>
+                <Section id="history" className="d-flex flex-column py-lg-5 mb-4">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-12 col-lg-8">
+                                <h2>Nossa História</h2>
+                                <p>
+                                    A Clean Air surgiu de um sonho de infância da família
+                                    Maraschin, o qual se concretizou no ano de 2010. Apesar
+                                    de todos os desafios, os irmãos Clarice, João, Cristina e 
+                                    Clarita não apenas criaram uma empresa do ramo da 
+                                    refrigeração, como também a estabeleceram no mercado, 
+                                    transformando-a em um sólido nome do segmento. 
+                                    Através de muito empenho, dedicação, formação e 
+                                    qualificação profissional de toda a equipe, a Clean Air, cada 
+                                    vez mais, tem adquirido reconhecimento pelos serviços 
+                                    prestados, conquistando uma vasta carteira de clientes.
+                                </p>
+                                <p>
+                                    A Clean Air trabalha com equipamentos, mas com enfoque 
+                                    no bem estar das pessoas, e foi esse aspecto o responsável
+                                    pelo fato de uma empresa originada por meio do sonho de 
+                                    uma família, hoje colaborar com a realização dos sonhos de 
+                                    outras tantas. 
+                                </p>
+                            </div>
 
-                    <div className="d-flex">
-                        <img src="/sobre-nos/historia.png"/>
+                            <div className="col-sm-12 col-lg-4">
+                                <img className="img-fluid" src="/sobre-nos/historia.png"/>
+                            </div>
+                        </div>
                     </div>
                     
                 </Section>
@@ -92,8 +96,8 @@ export default function Home() {
                 </Section>
 
                 <div id="carrierImg" 
-                    className="container-fluid d-flex flex-column justify-content-center align-items-center m-0 p-0"
-                    style={{overflow: 'hidden', height:'100vh', maxHeight:'600px', position: 'relative'}}
+                    className="container-fluid d-flex flex-column justify-content-center align-items-center m-0"
+                    style={{overflow: 'hidden', padding:'8rem 0', minHeight:'40vw', maxHeight:'600px', position: 'relative', backgroundImage:'url(/sobre-nos/onde-estiver.png)', backgroundPosition:'center center', backgroundSize:'cover'}}
                     >
                         
                     <div 
@@ -110,13 +114,12 @@ export default function Home() {
                         clientes dos mais variados segmentos
                         e localidades.
                     </div>
-                    <img style={{zIndex:'10', position:'absolute', width:'100%', height:'auto'}} src="/sobre-nos/onde-estiver.png"/>
                 </div>
 
                 <Section id="timeline" className="py-5 d-flex flex-column justify-content-center align-items-center">
 
                     <h3 className="fw-bold align-self-start">A Clean Air</h3>
-                    <div className="mb-5 align-self-start">Alguns destaques da empresa ao longo dos anos.</div>
+                    <div className="mb-5 align-self-start" style={{textAlign: 'left'}}>Alguns destaques da empresa ao longo dos anos.</div>
 
                     <img className="img-fluid" src="/sobre-nos/timeline.svg"/>
 

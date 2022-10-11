@@ -181,9 +181,9 @@ export default function Servicos() {
                     
                 </div>
 
-                <div id="projetos" className="container p-5">
+                <div id="projetos" className="container px-4 px-lg-0 py-5">
                     <div className="row">
-                        <div className="col-lg-5 col-sm-12">
+                        <div className="col-lg-5 col-sm-12 mb-2 mb-lg-0">
                             <img className="img-fluid mb-3" src="servicos/projetos.png"/>
                         </div>
                         <div className="col-lg-7 col-sm-12 d-flex flex-column justify-content-center">

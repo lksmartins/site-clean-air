@@ -60,41 +60,38 @@ export default function Sobre() {
                     
                 </div>
 
-                <Section id="history" className="d-flex flex-column py-5 mb-4">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-sm-12 col-lg-8">
-                                <h2>Nossa História</h2>
-                                <p>
-                                    A Clean Air surgiu de um sonho de infância da família
-                                    Maraschin, o qual se concretizou no ano de 2010. Apesar
-                                    de todos os desafios, os irmãos Clarice, João, Cristina e 
-                                    Clarita não apenas criaram uma empresa do ramo da 
-                                    refrigeração, como também a estabeleceram no mercado, 
-                                    transformando-a em um sólido nome do segmento. 
-                                    Através de muito empenho, dedicação, formação e 
-                                    qualificação profissional de toda a equipe, a Clean Air, cada 
-                                    vez mais, tem adquirido reconhecimento pelos serviços 
-                                    prestados, conquistando uma vasta carteira de clientes.
-                                </p>
-                                <p>
-                                    A Clean Air trabalha com equipamentos, mas com enfoque 
-                                    no bem estar das pessoas, e foi esse aspecto o responsável
-                                    pelo fato de uma empresa originada por meio do sonho de 
-                                    uma família, hoje colaborar com a realização dos sonhos de 
-                                    outras tantas. 
-                                </p>
-                            </div>
+                <div id="historia" className="container px-4 px-lg-0 py-5">
+                    <div className="row">
+                        <div className="col-sm-12 col-lg-8">
+                            <h2>Nossa História</h2>
+                            <p>
+                                A Clean Air surgiu de um sonho de infância da família
+                                Maraschin, o qual se concretizou no ano de 2010. Apesar
+                                de todos os desafios, os irmãos Clarice, João, Cristina e 
+                                Clarita não apenas criaram uma empresa do ramo da 
+                                refrigeração, como também a estabeleceram no mercado, 
+                                transformando-a em um sólido nome do segmento. 
+                                Através de muito empenho, dedicação, formação e 
+                                qualificação profissional de toda a equipe, a Clean Air, cada 
+                                vez mais, tem adquirido reconhecimento pelos serviços 
+                                prestados, conquistando uma vasta carteira de clientes.
+                            </p>
+                            <p>
+                                A Clean Air trabalha com equipamentos, mas com enfoque 
+                                no bem estar das pessoas, e foi esse aspecto o responsável
+                                pelo fato de uma empresa originada por meio do sonho de 
+                                uma família, hoje colaborar com a realização dos sonhos de 
+                                outras tantas. 
+                            </p>
+                        </div>
 
-                            <div className="col-sm-12 col-lg-4">
-                                <img className="img-fluid" src="/sobre-nos/historia.png"/>
-                            </div>
+                        <div className="col-sm-12 col-lg-4">
+                            <img className="img-fluid" src="/sobre-nos/historia.png"/>
                         </div>
                     </div>
-                    
-                </Section>
+                </div>
 
-                <div className="text-light py-5" style={{backgroundColor:'#001E60'}}>
+                <div id="bubbles" className="text-light px-4 px-lg-0 py-5 my-5" style={{backgroundColor:'#001E60'}}>
                     <Section id="bubbles_inverted" className={`${sectionStyles.grid} ${sectionStyles.col3} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
                             const img = <Image src={item.icon} layout="fill" objectFit="contain" alt={item.title} />

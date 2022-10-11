@@ -41,4 +41,8 @@ h1.text-light, h2.text-light, h3.text-light, h4.text-light, h5.text-light {
 a.link {
   color: #00A3E0 !important;
 }
+
+.container {
+  max-width: 1024px !important;
+}
 /*# sourceMappingURL=globals.css.map */

@@ -132,7 +132,7 @@ export default function Servicos() {
                     </div>
                 </div>
 
-                <div id="instalacao" className="container p-5">
+                <div id="instalacao" className="container px-4 px-lg-0 py-5">
                     <div className="row">
                         <div className="col-lg-7 col-sm-12 pe-lg-5">
                             <div className="d-flex flex-column justify-content-center w-100 h-100">

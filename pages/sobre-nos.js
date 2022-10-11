@@ -2,15 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Section from '../components/Section/Section'
 import sectionStyles from '../components/Section/styles/Section.module.css'
-import BannerSection from '../components/Section/BannerSection'
 import Bubble from '../components/Bubble/Bubble'
 import svgValores from '../public/sobre-nos/icon1.svg'
 import svgMissao from '../public/sobre-nos/icon2.svg'
 import svgVisao from '../public/sobre-nos/icon3.svg'
-import PortfolioSection from '../components/Cta/portfolio'
-import NewsletterSection from '../components/Cta/newsletter'
 
-export default function Home() {
+export default function Sobre() {
 
     const bubbleContent = [
         {"icon":svgValores, "title":"Valores", "text":<ul>
@@ -23,12 +20,6 @@ export default function Home() {
         {"icon":svgMissao, "title":"Missão", "text":"Garantir a perfeita operação dos sistemas de ar condicionado, superando as expectativas de economia, segurança e conforto de nossos clientes."},
         {"icon":svgVisao, "title":"Visão", "text":" Consolidar-se como uma das mais importantes empresas da região sul do país no segmento, sendo reconhecida pela excelência dos serviços prestados e pela responsabilidade socioambiental."},
     ]
-
-    const bubbleIcons = {
-        'valores': svgValores,
-        'missao': svgMissao,
-        'visao': svgVisao
-    }
 
     return (
         <>

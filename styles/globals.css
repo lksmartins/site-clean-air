@@ -19,4 +19,22 @@ main {
   margin-top: 10.3rem;
   min-height: 100vh;
 }
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold !important;
+  color: #001E60;
+}
+
+h1.border, h2.border, h3.border, h4.border, h5.border {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border: 2px solid white;
+  color: white;
+  padding: .5rem 3rem;
+}
+
+h1.text-light, h2.text-light, h3.text-light, h4.text-light, h5.text-light {
+  color: white;
+}
 /*# sourceMappingURL=globals.css.map */

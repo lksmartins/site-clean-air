@@ -37,4 +37,8 @@ h1.border, h2.border, h3.border, h4.border, h5.border {
 h1.text-light, h2.text-light, h3.text-light, h4.text-light, h5.text-light {
   color: white;
 }
+
+a.link {
+  color: #00A3E0 !important;
+}
 /*# sourceMappingURL=globals.css.map */

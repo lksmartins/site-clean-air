@@ -17,6 +17,10 @@
         &.grid {
             display: grid;
 
+            &.col3 {
+                grid-template-columns: repeat(3, 1fr);
+                align-items: flex-start;
+            }
             &.col4 {
                 grid-template-columns: repeat(4, 1fr);
                 align-items: flex-start;

@@ -140,7 +140,15 @@ export default function Form(props) {
                     return (
                         <div key={item.id} className={`${styles.inputGroup} ${item.type == 'checkbox' ? styles.inline : null}`}>
                             <label>{item.name}</label>
-                            <input id={`formId_${item.id}`} name={item.id} disabled={item.disabled && item.disabled} type={item.type}  onChange={handleInputChange} value={item.value && item.value} accept={item.type=="file"?"image/*, .pdf, .doc, .docx":"*" }/>
+                            <input 
+                                id={`formId_${item.id}`} 
+                                name={item.id} 
+                                disabled={item.disabled && item.disabled} 
+                                type={item.type}  
+                                onChange={handleInputChange} 
+                                value={item.value && item.value} 
+                                accept={item.type=="file"?"image/*, .pdf, .doc, .docx":"*" }
+                                />
                         </div>
                     )
                 })}

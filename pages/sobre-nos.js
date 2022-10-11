@@ -38,9 +38,38 @@ export default function Home() {
 
             <main>
 
-                <BannerSection/>
+                <div id="banner" 
+                    className="container-fluid d-flex flex-column justify-content-center align-items-center"
+                    style={{
+                        overflow: 'hidden', 
+                        padding:'7rem 0', 
+                        marginTop: '-85px',
+                        minHeight:'20vw', 
+                        maxHeight:'600px', 
+                        position: 'relative', 
+                        backgroundImage:'url(/sobre-nos/banner.png)', 
+                        backgroundPosition:'center center', 
+                        backgroundSize:'cover'
+                    }}
+                    >
+                        
+                    <div 
+                    className="text-light fw-bold fs-2"
+                    style={{
+                        padding: '.5rem 10vw',
+                        boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', 
+                        alignSelf:'flex-start', 
+                        backgroundColor:'rgba(0,30,96,0.85)'
+                    }}>
+                        Sobre nós
+                        <div className="fw-normal fs-5">
+                            Conheça a empresa
+                        </div>
+                    </div>
+                    
+                </div>
 
-                <Section id="history" className="d-flex flex-column py-lg-5 mb-4">
+                <Section id="history" className="d-flex flex-column py-5 mb-4">
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-12 col-lg-8">

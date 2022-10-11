@@ -29,7 +29,9 @@ export async function getServerSideProps() {
 
 const PortfolioLink = (props)=>{
 
-    return <Link href={backendDomain+props.url}><a target="_blank" download="clean_air_portfolio.pdf" className="link" rel="noreferrer">{props.children}</a></Link>
+    return <Link href={backendDomain+props.url} download="clean_air_portfolio.pdf" rel="noreferrer">
+        <a target="_blank" className="link">{props.children}</a>
+    </Link>
 
 }
 

@@ -196,7 +196,7 @@ export default function Form(props) {
                 </div>
 
                 <div className={`${styles.messageGroup} ${sentMessage==''?styles.hidden:styles.show}`}>
-                    <div className={!error?styles.success:styles.error}>{sentMessage}</div>
+                    <div className={!error?'bg-success text-light':'bg-danger text-light'}>{sentMessage}</div>
                 </div>
 
                 <div className={styles.buttonGroup}>

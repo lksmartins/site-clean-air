@@ -12,7 +12,7 @@ export default function Form(props) {
     const [error, setError] = useState(false)
     
     const defaultSendIcon = 'fas fa-arrow-circle-right'
-    const [sendIcon, setSendIcon] = useState(defaultSendIcon)
+    const [buttonContent, setButtonContent] = useState(buttonText)
 
     const [buttonDisabled, setButtonDisabled] = useState(false)
 
@@ -87,8 +87,8 @@ export default function Form(props) {
         }
 
         // load button
-        setSendIcon('fas fa-spin fa-spinner')
-        //setButtonDisabled(true)
+        setButtonContent(<i className="fa-solid fa-spin fa-spinner"></i>)
+        setButtonDisabled(true)
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
@@ -100,7 +100,7 @@ export default function Form(props) {
             if( res.status == 200 ){
                 res.json().then(response=>{
                     setButtonDisabled(false)
-                    setSendIcon(defaultSendIcon)
+                    setButtonContent(buttonText)
         
                     setError(false)
                     setSentMessage(successMessage)
@@ -113,7 +113,7 @@ export default function Form(props) {
                     console.log(apiBody)
                     
                     setButtonDisabled(false)
-                    setSendIcon(defaultSendIcon)
+                    setButtonContent(buttonText)
                     setError(true)
                     setSentMessage(errorMessage)
                 })
@@ -129,7 +129,7 @@ export default function Form(props) {
             console.log(apiBody)
 
             setButtonDisabled(false)
-            setSendIcon(defaultSendIcon)
+            setButtonContent(buttonText)
             setError(true)
             setSentMessage(errorMessage)
         })
@@ -166,12 +166,12 @@ export default function Form(props) {
                 </div>
 
                 <div className={`${styles.messageGroup} ${sentMessage==''?styles.hidden:styles.show}`}>
-                    <div className={!error?styles.success:styles.error}>{sentMessage}</div>
+                    <div className={!error?'bg-success text-light':'bg-danger text-light'}>{sentMessage}</div>
                 </div>
 
                 <div className={styles.buttonGroup}>
                     {footerLeftEl && <div>{footerLeftEl}</div>}
-                    <button disabled={buttonDisabled} type="submit">{buttonText}</button>
+                    <button disabled={buttonDisabled} type="submit">{buttonContent}</button>
                 </div>
 
             </div>

@@ -12,7 +12,7 @@ export default function Contato() {
         {id:'name', name:'Nome', type:'text', value:''},
         {id:'email', name:'E-mail', type:'email', value:''},
         {id:'message', name:'Mensagem', type:'text', value:''},
-        {id:'curriculum', name:'Currículo', type:'file', value:''}
+        {id:'cv', name:'Currículo', type:'file', value:''}
     ]
 
     return (
@@ -64,7 +64,7 @@ export default function Contato() {
                                         name: findValueById(state, 'name'), 
                                         email: findValueById(state, 'email'), 
                                         message: findValueById(state, 'message'),
-                                        curriculum: findFilenameById(state, 'curriculum')
+                                        cv: findFilenameById(state, 'cv')
                                     }
                                 }
                             }

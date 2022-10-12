@@ -3,7 +3,10 @@ import axios from 'axios'
 
 export default async function handler(req, res) {
 
-    const contentType = req.rawHeaders[19]
+    const contentType = req.rawHeaders.find(el=>el.includes('multipart/form-data'))
+
+    //console.log(req.rawHeaders)
+    //console.log(contentType)
 
     let axiosConfig = {
         headers: {

@@ -25,11 +25,11 @@ export default function Navbar() {
             <div className={styles.filler} onClick={()=>setShowMobileMenu(false)}></div>
             <div className={styles.menu}>
                 <div className={styles.menuItem}><Link href="/">
-                    <Image
+                    <a><Image
                         src={logoBranco}
                         layout="fill"
                         objectFit="contain"
-                        alt="Clean Air logo branco" /></Link></div>
+                        alt="Clean Air logo branco" /></a></Link></div>
                 {
                     menuItems.map(item => {
                         return <div className={styles.menuItem} key={item.id}><Link href={item.url}>{item.text}</Link></div>

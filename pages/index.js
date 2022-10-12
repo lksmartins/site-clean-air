@@ -50,7 +50,7 @@ export default function Home() {
                     <div className="row">
                         <div className="col-lg-6 col-sm-12">
                             <div className="w-100 h-100">
-                                <img src="/newsletter.png" alt="ar condicionado central midea"/>
+                                <img className="img-fluid mb-5 mb-lg-0" src="/newsletter.png" alt="ar condicionado central midea"/>
                             </div>
                         </div>
                         <div className="col-lg-6 col-sm-12 text-center">

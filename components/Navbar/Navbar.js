@@ -44,12 +44,12 @@ export default function Navbar() {
             <div className={styles.topBar}>
                 <div className={styles.container}>
                     <div className={styles.logo}>
-                        <Image
+                        <Link href="/"><a><Image
                             priority
                             src={logo}
                             layout="fill"
                             objectFit="contain"
-                            alt="Clean Air logo" />
+                            alt="Clean Air logo" /></a></Link>
                     </div>
                     <div className={styles.partners}>
                         <div className={styles.item}>

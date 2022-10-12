@@ -79,7 +79,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className={styles.bottomBarMobile}>
+            <div className={`${styles.bottomBarMobile} justify-content-end`}>
                 <SearchBar />
                 <a onClick={()=>setShowMobileMenu(!showMobileMenu)}><i className="fa-solid fa-bars"></i></a>
             </div>

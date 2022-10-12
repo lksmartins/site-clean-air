@@ -22,7 +22,7 @@
 .form .container .inputGroup {
   width: 100%;
   max-width: 302px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -141,7 +141,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: -1.5rem;
   margin-bottom: 1rem !important;
   padding-bottom: 0.5rem;
 }

@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import PropTypes from 'prop-types'
 import styles from './styles/ContactForm.module.css'
+import axios from 'axios'
+
 export default function Form(props) {
 
     const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
@@ -21,17 +23,23 @@ export default function Form(props) {
     function handleInputChange(e) {
 
         const target = e.target
-        const value = target.type === 'checkbox' ? target.checked : target.value
         const name = target.name
 
+        let value = ""
+        if(name == "curriculum"){
+            value = target.files[0]
+        }else{
+            value = target.type === 'checkbox' ? target.checked : target.value
+        }
+
         let newState = [...state]
-        
+
         newState.map((item, index)=>{
             if( item.id == name ){
                 newState[index].value = value
             }
         })
-    
+
         setState(newState)
     }
 
@@ -87,49 +95,92 @@ export default function Form(props) {
         setSendIcon('fas fa-spin fa-spinner')
         setButtonDisabled(true)
         
-        //console.log({...apiBody, token: process.env.API_TOKEN})
-        
-        fetch('/api/sendEmail', {
-            method: 'POST',
-            body: JSON.stringify({...apiBody(state), token: process.env.API_TOKEN})
-        })
-        .then(res=>{
-            if( res.status == 200 ){
-                res.json().then(response=>{
-                    setButtonDisabled(false)
-                    setSendIcon(defaultSendIcon)
-        
-                    setError(false)
-                    setSentMessage(successMessage)
-    
-                    onSuccess(response)
-                })
-                .catch(error=>{
-                    console.error('error on .json()')
-                    console.error(error)
-                    console.log(apiBody)
-                    
-                    setButtonDisabled(false)
-                    setSendIcon(defaultSendIcon)
-                    setError(true)
-                    setSentMessage(errorMessage)
-                })
-            }
-            else{
-                setError(true)
-                setSentMessage('Houve um erro inesperado. Tente novamente.')
-            }    
-        })
-        .catch(error=>{
-            console.error('error on fetch()')
-            console.error(error)
-            console.log(apiBody)
+        console.log(state[0])
+        console.log({...state})
+        const name = state[0].value
+        const email = state[1].value
+        const message = state[2].value
 
-            setButtonDisabled(false)
-            setSendIcon(defaultSendIcon)
-            setError(true)
-            setSentMessage(errorMessage)
+        let curriculum = new FormData()
+        curriculum.append("files", state[3].value)
+        console.log(state[3].value)
+
+        const formData = new FormData()
+        formData.append("name", name)
+        formData.append("email", email)
+        formData.append("message", message)
+
+        // fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/api/applicants`, {
+        //     method: 'POST',
+        //     body: formData,
+        //     headers: {
+        //         'Content-Type': `multipart/form-data;boundary=${formData._boundary}`
+        //     }
+        // })
+        // const uploadFile = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/api/upload`, {
+        //     method: 'POST',
+        //     data: curriculum,
+        //     headers: {
+        //         'Content-Type': `multipart/form-data;`
+        //     }
+        // })
+        
+        axios.post(`${process.env.NEXT_PUBLIC_BACK_URL}/api/upload`, curriculum)
+        .then(response=>{
+            const fileId = response.data[0].id
+            console.log(fileId)
+            axios({
+                method: "post",
+                url: `${process.env.NEXT_PUBLIC_BACK_URL}/api/applicants?populate=*`,
+                data: {
+                    name: name,
+                    email: email,
+                    message: message,
+                    cv: fileId
+                }
+            })
+            .then(res=>{
+                console.log(res)
+            })
         })
+        
+        // .then(res=>{
+        //     if( res.status == 200 ){
+        //         res.json().then(response=>{
+        //             setButtonDisabled(false)
+        //             setSendIcon(defaultSendIcon)
+        
+        //             setError(false)
+        //             setSentMessage(successMessage)
+    
+        //             onSuccess(response)
+        //         })
+        //         .catch(error=>{
+        //             console.error('error on .json()')
+        //             console.error(error)
+        //             console.log(apiBody)
+                    
+        //             setButtonDisabled(false)
+        //             setSendIcon(defaultSendIcon)
+        //             setError(true)
+        //             setSentMessage(errorMessage)
+        //         })
+        //     }
+        //     else{
+        //         setError(true)
+        //         setSentMessage('Houve um erro inesperado. Tente novamente.')
+        //     }    
+        // })
+        // .catch(error=>{
+        //     console.error('error on fetch()')
+        //     console.error(error)
+        //     console.log(apiBody)
+
+        //     setButtonDisabled(false)
+        //     setSendIcon(defaultSendIcon)
+        //     setError(true)
+        //     setSentMessage(errorMessage)
+        // })
         
     }
 
@@ -147,10 +198,9 @@ export default function Form(props) {
                                 name={item.id} 
                                 disabled={item.disabled && item.disabled} 
                                 type={item.type}  
-                                onChange={handleInputChange} 
-                                value={item.value && item.value} 
+                                onChange={handleInputChange}  
                                 accept={item.type=="file"?"image/*, .pdf, .doc, .docx":"*" }
-                                />
+                            />
                         </div>
                     )
                 })}

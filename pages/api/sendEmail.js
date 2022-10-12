@@ -1,11 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 export default async function handler(req, res) {
-
+  
+  // const upload = require('multer')()
   require('dotenv').config()
   const fs = require('fs')
   let nodemailer = require('nodemailer')
 
+  // upload.single('curriculum')
+
+  console.log("REQ.BODY:")
   console.log(req.body)
 
   const emailInfo = JSON.parse(req.body)

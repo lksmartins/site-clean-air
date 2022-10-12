@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles/portfolio.module.css'
 import Section from '../Section/Section'
+import Link from 'next/link'
 
 export default function portfolio() {
     return(
@@ -14,7 +15,7 @@ export default function portfolio() {
                         A partir do conhecimento técnico e da eficiência de nossa equipe, conquistamos a confiança de diversos clientes importantes e construímos um vasto portfólio especializado em centrais térmicas de ar condicionado e sistemas de refrigeração.
                     </div>
                     <div className={styles.link}>
-                        <a href="/portfolio">Acesse o catálogo completo <i className="fa-solid fa-caret-right"></i></a>
+                        <Link href="/portfolio"><a>Acesse o catálogo completo <i className="fa-solid fa-caret-right"></i></a></Link>
                     </div>
                 </div>
             </div>

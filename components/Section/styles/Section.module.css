@@ -18,6 +18,14 @@
   display: grid;
 }
 
+.section .container.grid.col3 {
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .section .container.grid.col4 {
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);

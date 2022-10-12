@@ -11,7 +11,8 @@ const env = {
   env: {
     ENV: process.env.ENV,
     NEXT_PUBLIC_RECAPTCHA_KEY: process.env.RECAPTCHA_KEY,
-    NEXT_PUBLIC_BACK_URL: process.env.NEXT_PUBLIC_BACK_URL
+    BACK_DOMAIN: process.env.BACK_DOMAIN,
+    BACK_TOKEN: process.env.BACK_TOKEN,
   }
 }
 

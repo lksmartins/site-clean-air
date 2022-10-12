@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import PropTypes from 'prop-types'
-import styles from './styles/ContactForm.module.css'
-import axios from 'axios'
+import styles from './ContactForm/styles/ContactForm.module.css'
 
 export default function Form(props) {
 
@@ -20,26 +19,22 @@ export default function Form(props) {
     const [ recaptchaHelp, setRecaptchaHelp ] = useState(false)
     const recaptchaRef = useRef()
 
+    const backendDomain = 'https://clean-air-backend-production.up.railway.app'
+
     function handleInputChange(e) {
 
         const target = e.target
+        const value = target.type === 'checkbox' ? target.checked : target.value
         const name = target.name
 
-        let value = ""
-        if(name == "curriculum"){
-            value = target.files[0]
-        }else{
-            value = target.type === 'checkbox' ? target.checked : target.value
-        }
-
         let newState = [...state]
-
+        
         newState.map((item, index)=>{
             if( item.id == name ){
                 newState[index].value = value
             }
         })
-
+    
         setState(newState)
     }
 
@@ -51,7 +46,7 @@ export default function Form(props) {
         setSentMessage('')
         setError(false)
 
-        if( window.hostname != 'localhost'){
+        if( window.location.hostname != 'localhost'){
             const recaptchaValue = recaptchaRef.current.getValue()
 
             if( recaptchaValue=='' ){
@@ -93,99 +88,56 @@ export default function Form(props) {
 
         // load button
         setSendIcon('fas fa-spin fa-spinner')
-        setButtonDisabled(true)
+        //setButtonDisabled(true)
         
-        console.log(state[0])
-        console.log({...state})
-        const name = state[0].value
-        const email = state[1].value
-        const message = state[2].value
-
-        let curriculum = new FormData()
-        curriculum.append("files", state[3].value)
-        console.log(state[3].value)
-
-        const formData = new FormData()
-        formData.append("name", name)
-        formData.append("email", email)
-        formData.append("message", message)
-
-        // fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/api/applicants`, {
-        //     method: 'POST',
-        //     body: formData,
-        //     headers: {
-        //         'Content-Type': `multipart/form-data;boundary=${formData._boundary}`
-        //     }
-        // })
-        // const uploadFile = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/api/upload`, {
-        //     method: 'POST',
-        //     data: curriculum,
-        //     headers: {
-        //         'Content-Type': `multipart/form-data;`
-        //     }
-        // })
+        //console.log({...apiBody, token: process.env.API_TOKEN})
         
-        axios.post(`${process.env.NEXT_PUBLIC_BACK_URL}/api/upload`, curriculum)
-        .then(response=>{
-            const fileId = response.data[0].id
-            console.log(fileId)
-            axios({
-                method: "post",
-                url: `${process.env.NEXT_PUBLIC_BACK_URL}/api/applicants?populate=*`,
-                data: {
-                    name: name,
-                    email: email,
-                    message: message,
-                    cv: fileId
-                }
-            })
-            .then(res=>{
-                console.log(res)
-            })
+        fetch(`/api/saveEmail`, {
+            method: 'POST',
+            body: JSON.stringify(apiBody(state))
         })
+        .then(res=>{
+            if( res.status == 200 ){
+                res.json().then(response=>{
+                    setButtonDisabled(false)
+                    setSendIcon(defaultSendIcon)
         
-        // .then(res=>{
-        //     if( res.status == 200 ){
-        //         res.json().then(response=>{
-        //             setButtonDisabled(false)
-        //             setSendIcon(defaultSendIcon)
-        
-        //             setError(false)
-        //             setSentMessage(successMessage)
+                    setError(false)
+                    setSentMessage(successMessage)
     
-        //             onSuccess(response)
-        //         })
-        //         .catch(error=>{
-        //             console.error('error on .json()')
-        //             console.error(error)
-        //             console.log(apiBody)
+                    onSuccess(response)
+                })
+                .catch(error=>{
+                    console.error('error on .json()')
+                    console.error(error)
+                    console.log(apiBody)
                     
-        //             setButtonDisabled(false)
-        //             setSendIcon(defaultSendIcon)
-        //             setError(true)
-        //             setSentMessage(errorMessage)
-        //         })
-        //     }
-        //     else{
-        //         setError(true)
-        //         setSentMessage('Houve um erro inesperado. Tente novamente.')
-        //     }    
-        // })
-        // .catch(error=>{
-        //     console.error('error on fetch()')
-        //     console.error(error)
-        //     console.log(apiBody)
+                    setButtonDisabled(false)
+                    setSendIcon(defaultSendIcon)
+                    setError(true)
+                    setSentMessage(errorMessage)
+                })
+            }
+            else{
+                setError(true)
+                setSentMessage('Houve um erro inesperado. Tente novamente.')
+            }    
+        })
+        .catch(error=>{
+            console.error('error on fetch()')
+            console.error(error)
+            console.log(apiBody)
 
-        //     setButtonDisabled(false)
-        //     setSendIcon(defaultSendIcon)
-        //     setError(true)
-        //     setSentMessage(errorMessage)
-        // })
+            setButtonDisabled(false)
+            setSendIcon(defaultSendIcon)
+            setError(true)
+            setSentMessage(errorMessage)
+        })
         
     }
 
     return(
-        <form className={styles.form} onSubmit={handleSubmit} encType="multipart/form-data" >
+        <form className={styles.form} onSubmit={handleSubmit}>
 
             <div className={styles.container}>
 
@@ -198,9 +150,9 @@ export default function Form(props) {
                                 name={item.id} 
                                 disabled={item.disabled && item.disabled} 
                                 type={item.type}  
-                                onChange={handleInputChange}  
-                                accept={item.type=="file"?"image/*, .pdf, .doc, .docx":"*" }
-                            />
+                                onChange={handleInputChange} 
+                                value={item.value && item.value} 
+                                />
                         </div>
                     )
                 })}

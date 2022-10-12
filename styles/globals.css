@@ -8,6 +8,12 @@ body {
 a {
   color: inherit !important;
   text-decoration: none !important;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #00A3E0 !important;
 }
 
 * {
@@ -36,6 +42,10 @@ h1.border, h2.border, h3.border, h4.border, h5.border {
 
 h1.text-light, h2.text-light, h3.text-light, h4.text-light, h5.text-light {
   color: white;
+}
+
+button:hover {
+  background-color: #00A3E0 !important;
 }
 
 a.link {

@@ -14,9 +14,9 @@ export default function Contato() {
     ]
 
     const socials = [
-        {title:'LinkedIn', text:'cleanair.ac', icon:'icon3', url:socialLinks.linkedin.url},
+        {title:'LinkedIn', text:'cleanair.ac', icon:'icon1', url:socialLinks.linkedin.url},
         {title:'Whatsapp', text:socialLinks.whatsapp.number, icon:'icon2', url:socialLinks.whatsapp.url},
-        {title:'Instagram', text:'@cleanair.ac', icon:'icon1', url:socialLinks.instagram.url},
+        {title:'Instagram', text:'@cleanair.ac', icon:'icon3', url:socialLinks.instagram.url},
     ]
 
     return (

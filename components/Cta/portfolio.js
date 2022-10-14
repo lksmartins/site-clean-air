@@ -15,7 +15,7 @@ export default function portfolio() {
                         A partir do conhecimento técnico e da eficiência de nossa equipe, conquistamos a confiança de diversos clientes importantes e construímos um vasto portfólio especializado em centrais térmicas de ar condicionado e sistemas de refrigeração.
                     </div>
                     <div className={styles.link}>
-                        <Link href="/portfolio"><a>Acesse o catálogo completo <i className="fa-solid fa-caret-right"></i></a></Link>
+                        <Link href="/portfolio"><a className="link">Acesse o catálogo completo <i className="fa-solid fa-caret-right"></i></a></Link>
                     </div>
                 </div>
             </div>

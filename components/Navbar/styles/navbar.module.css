@@ -67,7 +67,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: white;
   z-index: 100;
   /* * {
         outline: 1px solid red;
@@ -81,6 +80,7 @@
 
 .navbar .topBar {
   height: 5rem;
+  background-color: white;
   padding: 1rem 0;
 }
 
@@ -145,9 +145,13 @@
 }
 
 .navbar .bottomBar {
-  background-color: #001E60;
+  background-color: rgba(0, 30, 96, 0.8);
   color: white;
   height: 3.3rem;
+}
+
+.navbar .bottomBar:hover {
+  background-color: #001e60;
 }
 
 .navbar .bottomBar .container {
@@ -191,7 +195,7 @@
 
 .navbar .bottomBarMobile {
   display: none;
-  background-color: #001E60;
+  background-color: rgba(0, 30, 96, 0.8);
   color: white;
   padding: 0 1.25rem;
   height: 4.3rem;

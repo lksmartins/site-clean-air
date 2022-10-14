@@ -15,6 +15,8 @@ export default function Navbar() {
     const router = useRouter()
     const [showMobileMenu, setShowMobileMenu] = useState(false)
 
+    
+
     useEffect(()=>{
         setShowMobileMenu(false)
     },[router])
@@ -32,7 +34,9 @@ export default function Navbar() {
                         alt="Clean Air logo branco" /></a></Link></div>
                 {
                     menuItems.map(item => {
-                        return <div className={styles.menuItem} key={item.id}><Link href={item.url}>{item.text}</Link></div>
+                        return <div className={styles.menuItem} key={item.id}>
+                                    <Link href={item.url}><a className={router.pathname==item.url?'link':''}>{item.text}</a></Link>
+                                </div>
                     })
                 }
                 <div className={styles.menuItem}><a onClick={()=>setShowMobileMenu(false)}><i className="fa-solid fa-circle-chevron-left"></i> Voltar</a></div>
@@ -71,7 +75,9 @@ export default function Navbar() {
                     <div className={styles.menu}>
                         {
                             menuItems.map(item => {
-                                return <div className={styles.menuItem} key={item.id}><Link href={item.url}>{item.text}</Link></div>
+                                return <div className={styles.menuItem} key={item.id}>
+                                            <Link href={item.url}><a className={router.pathname==item.url?'link':''}>{item.text}</a></Link>
+                                        </div>
                             })
                         }
                         <SearchBar />

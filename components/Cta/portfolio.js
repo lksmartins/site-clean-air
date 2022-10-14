@@ -8,14 +8,16 @@ export default function portfolio() {
         <Section className={styles.portfolio}>
             <div className={styles.textBar}>
                 <div className={styles.container}>
-                    <div className={styles.title}>
-                        <h2>Nosso portfólio</h2>
+                    <div>
+                        <h3 className="border mt-3 mb-3">Nosso portfólio</h3>
                     </div>
-                    <div className={styles.text}>
-                        A partir do conhecimento técnico e da eficiência de nossa equipe, conquistamos a confiança de diversos clientes importantes e construímos um vasto portfólio especializado em centrais térmicas de ar condicionado e sistemas de refrigeração.
+                    <div>
+                        <p className="mb-0">
+                            A partir do conhecimento técnico e da eficiência de nossa equipe, conquistamos a confiança de diversos clientes importantes e construímos um vasto portfólio especializado em centrais térmicas de ar condicionado e sistemas de refrigeração.
+                        </p>
                     </div>
                     <div className={styles.link}>
-                        <Link href="/portfolio"><a className="link">Acesse o catálogo completo <i className="fa-solid fa-caret-right"></i></a></Link>
+                        <Link href="/portfolio"><a className="link underline fw-bold">Acesse o catálogo completo <i className="fa-solid fa-caret-right"></i></a></Link>
                     </div>
                 </div>
             </div>

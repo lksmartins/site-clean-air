@@ -79,7 +79,7 @@
 }
 
 .navbar .topBar {
-  height: 5rem;
+  height: 5.5rem;
   background-color: white;
   padding: 1rem 0;
 }
@@ -128,7 +128,7 @@
 }
 
 .navbar .topBar .container .partners * {
-  max-height: 1.5rem;
+  max-height: 1.2rem;
 }
 
 .navbar .topBar .container .partners .item {
@@ -224,7 +224,7 @@
 
 @media screen and (max-width: 768px) {
   .navbar .topBar {
-    height: 6rem;
+    height: 6.5rem;
   }
   .navbar .topBar .container {
     max-width: 768px;
@@ -240,7 +240,7 @@
 
 @media screen and (max-width: 425px) {
   .navbar .topBar {
-    height: 5rem;
+    height: 5.5rem;
   }
   .navbar .topBar .container {
     padding: 0 1rem;

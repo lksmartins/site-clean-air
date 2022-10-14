@@ -4,7 +4,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Roboto', Oxygen,
+    font-family: 'Poppins', 'Roboto', Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
 }
 
@@ -27,6 +27,10 @@ main {
     min-height: 100vh;
 }
 
+p{
+    font-weight: 400 !important;
+}
+
 h1,h2,h3,h4,h5{
     font-weight: bold !important;
     color: #001E60;
@@ -36,6 +40,7 @@ h1,h2,h3,h4,h5{
         border: 2px solid white;
         color: white;
         padding: .5rem 3rem;
+        font-weight: 900 !important;
     }
     &.text-light{
         color: white;
@@ -48,6 +53,10 @@ button:hover{
 
 a.link{
     color: $lightAccent !important;
+
+    &.underline:hover{
+        text-decoration: underline !important;
+    }
 }
 
 .container{

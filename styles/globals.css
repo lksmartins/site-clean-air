@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  font-family: 'Poppins', 'Roboto', Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
 }
 
 a {
@@ -22,8 +22,12 @@ a:hover {
 }
 
 main {
-  margin-top: 10.3rem;
+  margin-top: 10.8rem;
   min-height: 100vh;
+}
+
+p {
+  font-weight: 400 !important;
 }
 
 h1, h2, h3, h4, h5 {
@@ -38,6 +42,7 @@ h1.border, h2.border, h3.border, h4.border, h5.border {
   border: 2px solid white;
   color: white;
   padding: .5rem 3rem;
+  font-weight: 900 !important;
 }
 
 h1.text-light, h2.text-light, h3.text-light, h4.text-light, h5.text-light {
@@ -50,6 +55,10 @@ button:hover {
 
 a.link {
   color: #00A3E0 !important;
+}
+
+a.link.underline:hover {
+  text-decoration: underline !important;
 }
 
 .container {

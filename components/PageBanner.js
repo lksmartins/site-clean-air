@@ -1,29 +1,42 @@
 import React, {useState, useEffect} from 'react'
 
-export default function PageBanner({title, subtitle, heightProps={p:'8rem 0', minH:'20vw', maxH:'600px'}}) {
+export default function PageBanner({title, subtitle, heightProps={p:'7rem 0', minH:'20vw', maxH:'600px'}}) {
 
     const [backgroundPosition, setBackgroundPosition] = useState('center -3rem')
-    const adjustBgPos = ()=>{
+    const [overlaySize, setOverlaySize] = useState('50vw')
+    const handleResize = ()=>{
 
         const proportion = window.innerWidth/window.innerHeight
+        //console.log(proportion)
         let isMobile = window.innerHeight > window.innerWidth
         let newBgPos = 'center -3rem'
+        let newOverlaySize = '50vw'
 
-        if( isMobile || proportion < 1.48 ){
+        if( isMobile || proportion < 1.03 ){
             newBgPos = 'center center'
         }
 
-        if( newBgPos != backgroundPosition ) setBackgroundPosition(newBgPos)
+        if( isMobile ){
+            newOverlaySize = '0'
+        }
+
+        //console.log(newBgPos)
+        //console.log(newOverlaySize)
+
+        setBackgroundPosition(newBgPos)
+        setOverlaySize(newOverlaySize)
     }
 
     useEffect(() => {
 
+        console.log('window', window)
+
         if( window != undefined ){
-            adjustBgPos()
-            window.addEventListener('resize',adjustBgPos)
+            handleResize()
+            window.addEventListener('resize',handleResize)
         }
 
-        return () => window.removeEventListener("resize", adjustBgPos);
+        return () => window.removeEventListener('resize', handleResize)
 
     },[])
 
@@ -44,7 +57,7 @@ export default function PageBanner({title, subtitle, heightProps={p:'8rem 0', mi
             }}
             >
 
-                <div className="container">
+                <div className="container" style={{zIndex:2}}>
 
                     <div className="d-flex">
                         <div 
@@ -65,6 +78,15 @@ export default function PageBanner({title, subtitle, heightProps={p:'8rem 0', mi
                         </div>
                     </div>
                 </div>
+
+                <img src="/banner-linhas.png" style={{
+                    position: 'absolute',
+                    height: '100%',
+                    width: overlaySize,
+                    zIndex: 1,
+                    left: 0,
+                    top: 0,
+                }}/>
             
         </div>
 

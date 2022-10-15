@@ -23,6 +23,10 @@ export default function FloatingWhats() {
                 <img className="h-100" src="/contato/icon2.png"/>
             </a>
         </div>
-        <ReactTooltip place="left" effect="solid" />
+        <ReactTooltip 
+        place="left" 
+        effect="solid"
+        backgroundColor="rgba(0,0,0,0.8)"
+        />
     </>)
 }

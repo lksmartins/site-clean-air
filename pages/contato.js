@@ -115,8 +115,10 @@ export default function Contato() {
                                             <div className="d-flex justify-content-center mt-5 mb-3" style={{maxHeight:'6rem', position: 'relative'}}>
                                                 <Link href={item.url}><a><img className="img-fluid" src={`/contato/${item.icon}.png`}/></a></Link>
                                             </div>
-                                            <h4 className="mb-0 text-light"><Link href={item.url}>{item.title}</Link></h4>
-                                            <div><Link href={item.url}>{item.text}</Link></div>
+                                            <Link href={item.url}><a>
+                                                <h4 className="mb-0 text-light">{item.title}</h4>
+                                                <div>{item.text}</div>
+                                            </a></Link>
                                         </div>
                                     )
                                 })

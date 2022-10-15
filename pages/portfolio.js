@@ -58,7 +58,7 @@ export default function Portfolio({portfolioUrl}) {
                     <div className="row">
                         <div className="col-lg-7 col-sm-12 pe-lg-5">
                             <div className="d-flex flex-column justify-content-center w-100 h-100">
-                                <h3 className="mb-3 fw-black">Nosso portfólio</h3>
+                                <h2 className="mb-3 fw-black">Nosso portfólio</h2>
                                 <p>
                                     A partir do conhecimento técnico e da eficiência 
                                     de nossa equipe, conquistamos a confiança de

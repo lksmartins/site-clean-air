@@ -15,6 +15,7 @@ a {
 
     &:hover{
         color: $lightAccent !important;
+        h4{color: $lightAccent !important;}
     }
 }
 
@@ -34,6 +35,7 @@ p{
 h1,h2,h3,h4,h5{
     font-weight: bold !important;
     color: #001E60;
+    transition: all 0.3s ease !important;
 
     &.border{
         display: inline-flex;

@@ -19,7 +19,8 @@ export default function Servicos() {
     ]
 
     const manutencaoContent = [
-        {img:'/servicos/manutencao.png', content: <><h3 className="fw-bold text-light">Manutenção</h3>
+        {img:'/servicos/manutencao.png', content: <>
+        <h3 className="fw-black text-light">Manutenção</h3>
         <p>
             Especialidade da empresa, o serviço possui foco
             na manutenção de equipamentos de alta 

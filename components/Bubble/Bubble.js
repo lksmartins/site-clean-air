@@ -11,7 +11,7 @@ export default function Bubble(props) {
         <div className={styles.bubble}>
             <div className={styles.icon}>{icon}</div>
             <div className={styles.title}>{title}</div>
-            <div className={styles.text}>{text}</div>
+            <div className={`${styles.text} ${props.textClass}`}>{text}</div>
         </div>
     )
 }

@@ -12,7 +12,7 @@ export default function portfolio() {
                         <h3 className="border mt-3 mb-3">Nosso portfólio</h3>
                     </div>
                     <div>
-                        <p className="mb-0">
+                        <p className="mb-0 mx-auto px-5">
                             A partir do conhecimento técnico e da eficiência de nossa equipe, conquistamos a confiança de diversos clientes importantes e construímos um vasto portfólio especializado em centrais térmicas de ar condicionado e sistemas de refrigeração.
                         </p>
                     </div>

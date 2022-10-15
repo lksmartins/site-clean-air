@@ -10,7 +10,7 @@ export default function FloatingWhats() {
         className="position-fixed d-none d-sm-block p-2" style={{
             height: '5rem',
             zIndex: '100',
-            bottom: '0',
+            bottom: '1rem',
             right: '0',
         }}>
             <a 

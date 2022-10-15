@@ -32,10 +32,10 @@ export default function Sobre() {
 
                 <Banner title="Sobre nós" subtitle="Conheça a empresa"/>
 
-                <div id="historia" className="container px-4 px-lg-0 py-5">
+                <div id="historia" className="container px-4 px-lg-0 py-5 mt-lg-5">
                     <div className="row">
                         <div className="col-sm-12 col-lg-8">
-                            <h2 className="fw-black">Nossa História</h2>
+                            <h2 className="fw-black">Nossa história</h2>
                             <p>
                                 A Clean Air surgiu de um sonho de infância da família
                                 Maraschin, o qual se concretizou no ano de 2010. Apesar
@@ -67,7 +67,7 @@ export default function Sobre() {
                     <Section id="bubbles_inverted" className={`${sectionStyles.grid} ${sectionStyles.col3} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
                             const img = <Image src={item.icon} layout="fill" objectFit="contain" alt={item.title} />
-                            return <Bubble key={item.icon} title={item.title} icon={img}>{item.text}</Bubble>
+                            return <Bubble key={item.icon} textClass="text-start" title={item.title} icon={img}>{item.text}</Bubble>
                         })}
                     </Section>
                 </div>

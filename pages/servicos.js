@@ -78,6 +78,7 @@ export default function Servicos() {
                             <div key={item.img} className={`row ${i>0?'mt-2':''}`}>
                                 <div className="col-lg-6 col-sm-12 m-0 p-0">
                                     <div className="w-100 h-100" style={{
+                                        minHeight:'14rem',
                                         backgroundImage:`url(${item.img})`,
                                         backgroundPosition:'center center',
                                         backgroundSize:'cover'
@@ -231,7 +232,7 @@ export default function Servicos() {
 
                 <div id="projetos" className="container px-4 px-lg-0 py-5 my-4">
                     <div className="row">
-                        <div className="col-lg-5 col-sm-12 mb-2 mb-lg-0 px-5">
+                        <div className="col-lg-5 col-sm-12 mb-2 mb-lg-0 px-lg-5">
                             <img className="img-fluid mb-3" src="servicos/projetos.png"/>
                         </div>
                         <div className="col-lg-7 col-sm-12 d-flex flex-column justify-content-center">

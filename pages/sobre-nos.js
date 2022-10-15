@@ -32,7 +32,7 @@ export default function Sobre() {
 
                 <Banner title="Sobre nós" subtitle="Conheça a empresa"/>
 
-                <div id="historia" className="container px-4 px-lg-0 py-5 mt-lg-5">
+                <div id="historia" className="container py-5 mt-lg-5">
                     <div className="row">
                         <div className="col-sm-12 col-lg-8">
                             <h2 className="fw-black">Nossa história</h2>

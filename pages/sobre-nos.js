@@ -139,8 +139,9 @@ export default function Sobre() {
 
                     <h3 className="fw-bold align-self-start">A Clean Air</h3>
                     <div className="mb-5 align-self-start" style={{textAlign: 'left'}}>Alguns destaques da empresa ao longo dos anos.</div>
-
-                    <img className="img-fluid" src="/sobre-nos/timeline.svg"/>
+                    
+                    <img className="d-block d-md-none mx-5 img-fluid" src="/sobre-nos/timeline-mobile.svg"/>
+                    <img className="d-none d-md-block img-fluid" src="/sobre-nos/timeline.svg"/>
 
                 </Section>
 

@@ -31,7 +31,7 @@ export async function getServerSideProps() {
 const PortfolioLink = (props)=>{
 
     return <Link href={backendDomain+props.url} download="clean_air_portfolio.pdf" rel="noreferrer">
-        <a target="_blank" className="link">{props.children}</a>
+        <a target="_blank" className="link fw-bold">{props.children}</a>
     </Link>
 
 }
@@ -39,9 +39,9 @@ const PortfolioLink = (props)=>{
 export default function Portfolio({portfolioUrl}) {
 
     const bubbleContent = [
-        {"icon":svg1, "title":"Conhecimento e experiência"},
-        {"icon":svg2, "title":"Excelente custo-benefício"},
-        {"icon":svg3, "title":"Compromisso e agilidade"},
+        {"icon":svg1, "title":<>Conhecimento<br/>e experiência</>},
+        {"icon":svg2, "title":<>Excelente<br/>custo-benefício</>},
+        {"icon":svg3, "title":<>Compromisso<br/>e agilidade</>},
     ]
 
     return (
@@ -58,7 +58,7 @@ export default function Portfolio({portfolioUrl}) {
                     <div className="row">
                         <div className="col-lg-7 col-sm-12 pe-lg-5">
                             <div className="d-flex flex-column justify-content-center w-100 h-100">
-                                <h3 className="mb-3">Nosso portfólio</h3>
+                                <h3 className="mb-3 fw-black">Nosso portfólio</h3>
                                 <p>
                                     A partir do conhecimento técnico e da eficiência 
                                     de nossa equipe, conquistamos a confiança de
@@ -99,7 +99,7 @@ export default function Portfolio({portfolioUrl}) {
                         width: '110%'
                     }}>
                         <h3 className="border mb-3 text-center">Especialistas em Chiller</h3>
-                        <div className="fs-5 fw-normal w-100 w-lg-75 text-center" style={{maxWidth:'960px'}}>
+                        <div className="fs-5 fw-regular w-100 w-lg-75 text-center" style={{maxWidth:'960px'}}>
                             Com mais de dez anos de expriência, a Clean Air Ar Condicionado vem atuando na área de 
                             refrigeração e realizando serviços em diversos equipamentos. Dentre os trabalhos executados, 
                             a especialidade da empresa concentra-se na manutenção e na instalação de chillers. Confira
@@ -110,7 +110,7 @@ export default function Portfolio({portfolioUrl}) {
                 </div>
                 
                 <div id="bubbles" className="container py-5">
-                    <h2 className="fw-bold text-center text-lg-start mb-3">Vantagens</h2>
+                    <h2 className="fw-black text-center text-lg-start mb-2">Vantagens</h2>
                     <div className="mb-4 text-center text-lg-start">Alguns dos benefícios adquiridos ao contratar a empresa.</div>
                     <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col3} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{

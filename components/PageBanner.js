@@ -31,8 +31,8 @@ export default function PageBanner({title, subtitle, heightProps={p:'8rem 0', mi
                                 backgroundColor:'rgba(0,30,96,0.85)'
                         }}>
                             <div>
-                                {title}
-                                <div className="fw-normal fs-5">
+                                <div className="fw-black pt-2" style={{lineHeight:'1.8rem'}}>{title}</div>
+                                <div className="fw-light fs-4">
                                     {subtitle}
                                 </div>
                             </div>

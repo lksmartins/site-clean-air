@@ -60,7 +60,7 @@ export default function Servicos() {
                 <Banner title="Serviços" subtitle="Encontre o que precisa"/>
                 
                 <div id="bubbles" className="container py-5">
-                    <h2 className="fw-bold text-center text-lg-start mb-3">Nossos serviços</h2>
+                    <h2 className="fw-black text-center text-lg-start mb-3">Nossos serviços</h2>
                     <div className="mb-4 text-center text-lg-start">A partir da qualificação, da eficiência e da agilidade de nossa equipe, fornecemos as melhores soluções para o seu sistema de ar condicionado. Confira as possibilidades e escolha a que melhor se adequa às suas necessidades.</div>
                     <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col4} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
@@ -184,7 +184,7 @@ export default function Servicos() {
                     <div className="row">
                         <div className="col-lg-7 col-sm-12 pe-lg-5">
                             <div className="d-flex flex-column justify-content-center w-100 h-100">
-                                <h3 className="mb-3">Instalação</h3>
+                                <h3 className="mb-3 fw-black">Instalação</h3>
                                 <p>
                                     A empresa efetua a instalação de centrais de água 
                                     gelada, VRF e sistemas de ar condicionado central, 
@@ -229,13 +229,13 @@ export default function Servicos() {
                     
                 </div>
 
-                <div id="projetos" className="container px-4 px-lg-0 py-5">
+                <div id="projetos" className="container px-4 px-lg-0 py-5 my-4">
                     <div className="row">
-                        <div className="col-lg-5 col-sm-12 mb-2 mb-lg-0">
+                        <div className="col-lg-5 col-sm-12 mb-2 mb-lg-0 px-5">
                             <img className="img-fluid mb-3" src="servicos/projetos.png"/>
                         </div>
                         <div className="col-lg-7 col-sm-12 d-flex flex-column justify-content-center">
-                            <h3 className="mb-3">Projetos</h3>
+                            <h3 className="mb-3 fw-black">Projetos</h3>
                             <p>
                                 Direcionados para climatização e/ou refrigeração, a Clean Air 
                                 também disponibiliza a elaboração de projetos personalizados 

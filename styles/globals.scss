@@ -37,14 +37,32 @@ h1,h2,h3,h4,h5{
 
     &.border{
         display: inline-flex;
-        border: 2px solid white;
+        border: 2px solid white !important;
         color: white;
-        padding: .5rem 3rem;
+        padding: .5rem 2rem;
         font-weight: 900 !important;
+
+        &.dark{
+            color: #001E60;
+            border-color: #001E60 !important;
+        }
     }
     &.text-light{
         color: white;
     }
+}
+
+.fw-bold{
+    font-weight: 700 !important;
+}
+.fw-black{
+    font-weight: 900 !important;
+}
+.fw-regular{
+    font-weight: 400 !important;
+}
+.fw-light{
+    font-weight: 200 !important;
 }
 
 button:hover{

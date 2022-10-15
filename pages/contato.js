@@ -66,7 +66,7 @@ export default function Contato() {
                             
                             <div style={{maxWidth:'362px'}}>
                                 <div className="mb-3 mt-5 mt-lg-0" style={{padding:'0 1.8rem'}}>
-                                    <h3>Trabalhe conosco</h3>
+                                    <h3 className="fw-black">Trabalhe conosco</h3>
                                     <div>Queremos conhecer o seu talento, venha fazer parte da nossa equipe.</div>
                                 </div>
                                 
@@ -129,15 +129,15 @@ export default function Contato() {
                     <div className="row text-center text-lg-start">
                         <div className="col-lg-7">
                             <div className="d-flex flex-column justify-content-center align-items-center align-items-lg-start w-100 h-100">
-                                <h3 className="mb-5">E-mails</h3>
+                                <h3 className="mb-5 fw-black">E-mails</h3>
 
-                                <h5 className="mb-0">Setor administrativo</h5>
+                                <h5 className="mb-0 fw-black">Setor administrativo</h5>
                                 <div className="mb-3">administracao@cleanairarcondicionado.com.br</div>
 
-                                <h5 className="mb-0">Setor comercial</h5>
+                                <h5 className="mb-0 fw-black">Setor comercial</h5>
                                 <div className="mb-3">comercial@cleanairarcondicionado.com.br</div>
 
-                                <h5 className="mb-0">Departamento técnico</h5>
+                                <h5 className="mb-0 fw-black">Departamento técnico</h5>
                                 <div className="mb-3">deptecnico@cleanairarcondicionado.com.br</div>
                             </div>
                         </div>

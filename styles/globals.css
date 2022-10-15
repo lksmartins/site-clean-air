@@ -39,14 +39,35 @@ h1.border, h2.border, h3.border, h4.border, h5.border {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border: 2px solid white;
+  border: 2px solid white !important;
   color: white;
-  padding: .5rem 3rem;
+  padding: .5rem 2rem;
   font-weight: 900 !important;
+}
+
+h1.border.dark, h2.border.dark, h3.border.dark, h4.border.dark, h5.border.dark {
+  color: #001E60;
+  border-color: #001E60 !important;
 }
 
 h1.text-light, h2.text-light, h3.text-light, h4.text-light, h5.text-light {
   color: white;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+}
+
+.fw-black {
+  font-weight: 900 !important;
+}
+
+.fw-regular {
+  font-weight: 400 !important;
+}
+
+.fw-light {
+  font-weight: 200 !important;
 }
 
 button:hover {

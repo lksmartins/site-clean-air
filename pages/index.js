@@ -62,7 +62,7 @@ export default function Home() {
             <main>
 
                 <div id="banner"
-                    className="container-fluid d-flex flex-column justify-content-center align-items-center"
+                    className="container-fluid d-flex flex-column justify-content-center align-items-center mb-5"
                     style={{
                         marginTop:          '-85px',
                         overflow:           'hidden', 
@@ -127,7 +127,7 @@ export default function Home() {
 
                 <PortfolioSection/>
 
-                <div className="container py-5 my-4">
+                <div id="newsletter" className="container py-5 my-4">
                     <div className="row">
                         <div className="col-lg-6 col-sm-12">
                             <div className="w-100 h-100">
@@ -135,7 +135,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="col-lg-6 col-sm-12 text-center">
-                            <h3>Não perca nossas atualizações</h3>
+                            <h3 className="fw-black">Não perca nossas atualizações</h3>
                             <div className="mb-3">Preencha o campo abaixo e receba novidades por e-mail.</div>
                             <Form
                                 fields={fields}

@@ -35,7 +35,7 @@ export default function Sobre() {
                 <div id="historia" className="container px-4 px-lg-0 py-5">
                     <div className="row">
                         <div className="col-sm-12 col-lg-8">
-                            <h2>Nossa História</h2>
+                            <h2 className="fw-black">Nossa História</h2>
                             <p>
                                 A Clean Air surgiu de um sonho de infância da família
                                 Maraschin, o qual se concretizou no ano de 2010. Apesar
@@ -74,7 +74,7 @@ export default function Sobre() {
 
                 <Section id="carrier" className="py-5 d-flex flex-column justify-content-center align-items-center">
 
-                    <h3 className="fw-bold mb-4" style={{border:'2px solid #001E60', padding:'0.5rem 1rem'}}>Credenciada Carrier</h3>
+                    <h3 className="border dark mb-4">Credenciada Carrier</h3>
                     <p className="fs-5 text-center">
                         Um dos indicativos da qualidade dos serviços prestados pela Clean Air Ar Condicionado, 
                         trata-se do fato da empresa pertencer à rede de instaladores credenciados da <b>Carrier</b>, o 
@@ -108,7 +108,7 @@ export default function Sobre() {
                                 }}>
                                 <div>
                                     <div className="mb-2" style={{
-                                        marginRight: '3rem',
+                                        marginRight: '10vw',
                                         marginLeft: '-50vw',
                                         padding: '.5rem 3rem .5rem 50vw',
                                         boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', 
@@ -119,7 +119,7 @@ export default function Sobre() {
                                     
                                     <div className="fw-normal fs-5 p-3" style={{
                                         boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', 
-                                        width:'clamp(320px, 40vw, 960px)', 
+                                        width:'clamp(320px, 30vw, 960px)', 
                                         backgroundColor:'rgba(0,163,224,0.75)'
                                     }}>
                                         Atuando desde 2010 na área de 
@@ -137,7 +137,7 @@ export default function Sobre() {
                 
                 <Section id="timeline" className="py-5 d-flex flex-column justify-content-center align-items-center">
 
-                    <h3 className="fw-bold align-self-start">A Clean Air</h3>
+                    <h3 className="fw-black align-self-start">A Clean Air</h3>
                     <div className="mb-5 align-self-start" style={{textAlign: 'left'}}>Alguns destaques da empresa ao longo dos anos.</div>
                     
                     <img className="d-block d-md-none mx-5 img-fluid" src="/sobre-nos/timeline-mobile.svg"/>

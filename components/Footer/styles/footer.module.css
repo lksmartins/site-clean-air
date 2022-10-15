@@ -80,6 +80,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 1rem;
+  font-weight: 200;
 }
 
 .footer .container .info .col {

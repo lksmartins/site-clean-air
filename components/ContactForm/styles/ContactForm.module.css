@@ -40,12 +40,13 @@
   width: -moz-fit-content;
   width: fit-content;
   font-size: 0.75rem;
-  font-weight: 200;
+  font-weight: 700;
   margin-left: 0.5rem;
   margin-bottom: -0.5rem;
   padding: 0 0.25rem;
   background: white;
   z-index: 10;
+  color: #001E60;
 }
 
 .form .container .inputGroup input {

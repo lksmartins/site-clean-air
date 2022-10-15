@@ -35,12 +35,13 @@ $maxWidth: 302px;
             label{
                 width: fit-content;
                 font-size: 0.75rem;
-                font-weight: 200;
+                font-weight: 700;
                 margin-left: 0.5rem;
                 margin-bottom: -0.5rem;
                 padding: 0 0.25rem;
                 background: $pagebackground;
                 z-index: 10;
+                color: $fieldBorder;
             }
 
             input{

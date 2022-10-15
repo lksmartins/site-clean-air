@@ -126,9 +126,12 @@ export default function Contato() {
                 </div>
 
                 <div id="emails" className="container py-5">
-                    <div className="row text-center text-lg-start">
-                        <div className="col-lg-7">
-                            <div className="d-flex flex-column justify-content-center align-items-center align-items-lg-start w-100 h-100">
+                    <div className="row">
+                        <div className="col-lg-7 col-sm-12">
+                            <div className="d-flex flex-column justify-content-center align-items-start w-100 h-100" style={{
+                                overflow: 'hidden',
+                                fontSize: '0.9rem'
+                            }}>
                                 <h3 className="mb-5 fw-black">E-mails</h3>
 
                                 <h5 className="mb-0 fw-black">Setor administrativo</h5>

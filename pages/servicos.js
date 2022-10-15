@@ -60,8 +60,8 @@ export default function Servicos() {
                 <Banner title="Serviços" subtitle="Encontre o que precisa"/>
                 
                 <div id="bubbles" className="container py-5">
-                    <h2 className="fw-black text-center text-lg-start mb-3">Nossos serviços</h2>
-                    <div className="mb-4 text-center text-lg-start">A partir da qualificação, da eficiência e da agilidade de nossa equipe, fornecemos as melhores soluções para o seu sistema de ar condicionado. Confira as possibilidades e escolha a que melhor se adequa às suas necessidades.</div>
+                    <h2 className="fw-black text-start mb-3">Nossos serviços</h2>
+                    <div className="mb-4 text-start">A partir da qualificação, da eficiência e da agilidade de nossa equipe, fornecemos as melhores soluções para o seu sistema de ar condicionado. Confira as possibilidades e escolha a que melhor se adequa às suas necessidades.</div>
                     <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col4} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
                             const img = <Image src={item.icon} layout="fill" objectFit="contain" alt={item.title} />

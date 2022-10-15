@@ -1,5 +1,5 @@
 {
     "instagram":{"url":"/"},
     "linkedin":{"url":"/"},
-    "whatsapp":{"url":"/", "number":"(51) XXX-XXX-XXX"}
+    "whatsapp":{"url":"https://api.whatsapp.com/send?phone=555192337112", "number":"(51) XXX-XXX-XXX"}
 }

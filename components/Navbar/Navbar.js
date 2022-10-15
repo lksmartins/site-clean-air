@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import styles from './styles/navbar.module.css'
 import menuItems from '../../lib/menuItems.json'
-import SearchBar from './SearchBar'
 import Image from 'next/image'
 import logo from '../../public/logo-azul.png'
 import logoBranco from '../../public/logo-branco.png'
@@ -9,13 +8,12 @@ import logoMidea from '../../public/midea.svg'
 import logoCarrier from '../../public/carrier.svg'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import social from '../../lib/social.json'
 
 export default function Navbar() {
 
     const router = useRouter()
     const [showMobileMenu, setShowMobileMenu] = useState(false)
-
-    
 
     useEffect(()=>{
         setShowMobileMenu(false)
@@ -23,6 +21,7 @@ export default function Navbar() {
 
     return (
     <>
+        {/* MOBILE OVERLAY */}
         <nav className={`${styles.mobileMenu} ${!showMobileMenu && styles.hidden}`}>
             <div className={styles.filler} onClick={()=>setShowMobileMenu(false)}></div>
             <div className={styles.menu}>
@@ -42,9 +41,8 @@ export default function Navbar() {
                 <div className={styles.menuItem}><a onClick={()=>setShowMobileMenu(false)}><i className="fa-solid fa-circle-chevron-left"></i> Voltar</a></div>
             </div>
         </nav>
-        
+            
         <nav className={styles.navbar}>
-
             <div className={styles.topBar}>
                 <div className={styles.container}>
                     <div className={styles.logo}>
@@ -80,13 +78,12 @@ export default function Navbar() {
                                         </div>
                             })
                         }
-                        <SearchBar />
                     </div>
                 </div>
             </div>
 
-            <div className={`${styles.bottomBarMobile} justify-content-end`}>
-                <SearchBar />
+            <div className={`${styles.bottomBarMobile} justify-content-between`}>
+                <a href={social.whatsapp.url} target="_blank" rel="noreferrer" className="h-100" style={{padding:'0.75rem 0'}}><img className="h-100" src="/contato/icon2.png"/></a>
                 <a onClick={()=>setShowMobileMenu(!showMobileMenu)}><i className="fa-solid fa-bars"></i></a>
             </div>
 

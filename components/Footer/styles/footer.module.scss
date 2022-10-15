@@ -59,6 +59,7 @@ $lightBlue: #00A3E0;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
+            gap: 1rem;
 
             .col{
                 //width: 50%;
@@ -100,7 +101,7 @@ $lightBlue: #00A3E0;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .footer{
         //*{outline: 1px solid red;}
         .container{

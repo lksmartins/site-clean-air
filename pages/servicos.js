@@ -18,6 +18,37 @@ export default function Servicos() {
         {"icon":svgProjetos, "title":"Projetos"},
     ]
 
+    const manutencaoContent = [
+        {img:'/servicos/manutencao.png', content: <><h3 className="fw-bold text-light">Manutenção</h3>
+        <p>
+            Especialidade da empresa, o serviço possui foco
+            na manutenção de equipamentos de alta 
+            capacidade, tais como: Chillers, ar condicionado 
+            central e VRF, atuando em todos os pontos do 
+            sistema (torres, bombas, fan coils, tubulações,
+            chillers, e periféricos). A manutenção é dividida 
+            em preditiva, preventiva e corretiva:
+        </p></>},
+
+        {img:'/servicos/preventiva.png', content: <>
+            <p>
+                <b>Preditiva e Preventiva:</b> análise e monitoramento
+                de parâmetros operacionais buscando garantir 
+                a melhor performance dos equipamentos; além 
+                de atuar na prevenção de possíveis danos.
+            </p>
+            <p>
+                <b>Corretiva:</b> correção de falhas e danos, analisando 
+                a causa raiz e recuperando o correto funcionamento 
+                dos aparelhos.
+            </p>
+            <p>
+                <b>PMOC e ART:</b> emissão de ART e execução de PMOC 
+                (Plano de Manutenção, Operação e Controle). 
+            </p>
+        </>},
+    ]
+
     return (
         <>
             <Head>
@@ -39,31 +70,76 @@ export default function Servicos() {
                     </Section>
                 </div>
 
-                <div id="manutencao" className="container">
-                    <div className="row">
+                <div id="manutencao" className="container-fluid">
+
+                    {manutencaoContent.map((item,i)=>{
+
+                        return (
+                            <div key={item.img} className={`row ${i>0?'mt-2':''}`}>
+                                <div className="col-lg-6 col-sm-12 m-0 p-0">
+                                    <div className="w-100 h-100" style={{
+                                        backgroundImage:`url(${item.img})`,
+                                        backgroundPosition:'center center',
+                                        backgroundSize:'cover'
+                                    }}
+                                    ></div>
+                                </div>
+
+                                <div 
+                                    className="col-lg-6 m-0 p-0 col-sm-12 text-light d-flex flex-column justify-content-center text-center text-lg-start"
+                                    style={{
+                                    overflow: 'hidden', 
+                                    backgroundImage:'url(/servicos/imgBg.png)', 
+                                    backgroundPosition:'center center', 
+                                    backgroundSize:'cover'
+                                }}>
+                                    <div style={{
+                                        padding:'3rem 4rem', 
+                                        maxWidth: '512px'
+                                    }}>
+                                        {item.content}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        )
+
+                    })}
+
+                    {/* <div className="row">
                         <div className="col-lg-6 col-sm-12 m-0 p-0">
-                            <img className="img-fluid" src="/servicos/manutencao.png"/>
+                            <div className="w-100 h-100" style={{
+                                backgroundImage:'url(/servicos/manutencao.png)',
+                                backgroundPosition:'center center',
+                                backgroundSize:'cover'
+                            }}
+                            ></div>
                         </div>
 
                         <div 
-                        className="col-lg-6 col-sm-12 text-light d-flex flex-column justify-content-center text-center text-lg-start"
-                        style={{
+                            className="col-lg-6 m-0 p-0 col-sm-12 text-light d-flex flex-column justify-content-center text-center text-lg-start"
+                            style={{
                             overflow: 'hidden', 
-                            padding:'1rem 4rem', 
                             backgroundImage:'url(/servicos/imgBg.png)', 
                             backgroundPosition:'center center', 
                             backgroundSize:'cover'
                         }}>
-                            <h3 className="fw-bold text-light">Manutenção</h3>
-                            <p>
-                                Especialidade da empresa, o serviço possui foco
-                                na manutenção de equipamentos de alta 
-                                capacidade, tais como: Chillers, ar condicionado 
-                                central e VRF, atuando em todos os pontos do 
-                                sistema (torres, bombas, fan coils, tubulações,
-                                chillers, e periféricos). A manutenção é dividida 
-                                em preditiva, preventiva e corretiva:
-                            </p>
+                            <div className="border" style={{
+                                padding:'3rem 4rem', 
+                                maxWidth: '512px'
+                            }}>
+                                <h3 className="fw-bold text-light">Manutenção</h3>
+                                <p>
+                                    Especialidade da empresa, o serviço possui foco
+                                    na manutenção de equipamentos de alta 
+                                    capacidade, tais como: Chillers, ar condicionado 
+                                    central e VRF, atuando em todos os pontos do 
+                                    sistema (torres, bombas, fan coils, tubulações,
+                                    chillers, e periféricos). A manutenção é dividida 
+                                    em preditiva, preventiva e corretiva:
+                                </p>
+                            </div>
+                            
                         </div>
                     </div>
                     <div className="row mt-1">
@@ -101,7 +177,7 @@ export default function Servicos() {
 
                         </div>
 
-                    </div>
+                    </div> */}
                 </div>
 
                 <div id="instalacao" className="container px-4 px-lg-0 py-5">

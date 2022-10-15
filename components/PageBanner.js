@@ -1,6 +1,32 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 export default function PageBanner({title, subtitle, heightProps={p:'8rem 0', minH:'20vw', maxH:'600px'}}) {
+
+    const [backgroundPosition, setBackgroundPosition] = useState('center -3rem')
+    const adjustBgPos = ()=>{
+
+        const proportion = window.innerWidth/window.innerHeight
+        let isMobile = window.innerHeight > window.innerWidth
+        let newBgPos = 'center -3rem'
+
+        if( isMobile || proportion < 1.48 ){
+            newBgPos = 'center center'
+        }
+
+        if( newBgPos != backgroundPosition ) setBackgroundPosition(newBgPos)
+    }
+
+    useEffect(() => {
+
+        if( window != undefined ){
+            adjustBgPos()
+            window.addEventListener('resize',adjustBgPos)
+        }
+
+        return () => window.removeEventListener("resize", adjustBgPos);
+
+    },[])
+
     return(
         
         <div
@@ -13,7 +39,7 @@ export default function PageBanner({title, subtitle, heightProps={p:'8rem 0', mi
                 maxHeight:          heightProps.maxH, 
                 position:           'relative', 
                 backgroundImage:    'url(/sobre-nos/banner.png)', 
-                backgroundPosition: 'center -3rem',
+                backgroundPosition: backgroundPosition,
                 backgroundSize:     'cover'
             }}
             >

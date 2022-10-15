@@ -2,18 +2,19 @@ import React, {useState, useEffect} from 'react'
 
 export default function PageBanner({title, subtitle, heightProps={p:'7rem 0', minH:'20vw', maxH:'600px'}}) {
 
-    const [backgroundPosition, setBackgroundPosition] = useState('center -3rem')
+    const defaultBgPos ='center -7rem'
+    const [backgroundPosition, setBackgroundPosition] = useState(defaultBgPos)
     const [overlaySize, setOverlaySize] = useState('50vw')
     const handleResize = ()=>{
 
         const proportion = window.innerWidth/window.innerHeight
         //console.log(proportion)
         let isMobile = window.innerHeight > window.innerWidth
-        let newBgPos = 'center -3rem'
+        let newBgPos = defaultBgPos
         let newOverlaySize = '50vw'
 
-        if( isMobile || proportion < 1.03 ){
-            newBgPos = 'center center'
+        if( isMobile || proportion < 1.42 ){
+            newBgPos = 'center top'
         }
 
         if( isMobile ){
@@ -51,7 +52,7 @@ export default function PageBanner({title, subtitle, heightProps={p:'7rem 0', mi
                 minHeight:          heightProps.minH, 
                 maxHeight:          heightProps.maxH, 
                 position:           'relative', 
-                backgroundImage:    'url(/sobre-nos/banner.png)', 
+                backgroundImage:    'url(/fachada.jpg)', 
                 backgroundPosition: backgroundPosition,
                 backgroundSize:     'cover'
             }}

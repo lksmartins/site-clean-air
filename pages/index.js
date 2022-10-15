@@ -27,15 +27,16 @@ export default function Home() {
         {id:'email', name:'E-mail', type:'email', value:''},
     ]
 
-    const [backgroundPosition, setBackgroundPosition] = useState('center -3rem')
+    const defaultBgPos = 'center -7rem'
+    const [backgroundPosition, setBackgroundPosition] = useState(defaultBgPos)
     const adjustBgPos = ()=>{
 
         const proportion = window.innerWidth/window.innerHeight
         let isMobile = window.innerHeight > window.innerWidth
-        let newBgPos = 'center -3rem'
+        let newBgPos = defaultBgPos
 
         if( isMobile || proportion < 1.48 ){
-            newBgPos = 'center center'
+            newBgPos = 'center top'
         }
 
         if( newBgPos != backgroundPosition ) setBackgroundPosition(newBgPos)
@@ -70,7 +71,7 @@ export default function Home() {
                         minHeight:          '20vw', 
                         maxHeight:          '500px', 
                         position:           'relative', 
-                        backgroundImage:    'url(/sobre-nos/banner.png)', 
+                        backgroundImage:    'url(/fachada.jpg)', 
                         backgroundPosition: backgroundPosition,
                         backgroundSize:     'cover'
                     }}

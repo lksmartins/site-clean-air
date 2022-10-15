@@ -3,6 +3,7 @@ import ContactForm from '../components/ContactForm/ContactForm'
 import { findValueById, findFilenameById } from '../lib/helper'
 import socialLinks from '../lib/social.json'
 import Link from 'next/link'
+import Banner from '../components/PageBanner'
 
 export default function Contato() {
 
@@ -27,36 +28,7 @@ export default function Contato() {
 
             <main>
 
-                <div id="banner" 
-                    className="container-fluid d-flex flex-column justify-content-center align-items-center"
-                    style={{
-                        overflow: 'hidden', 
-                        padding:'7rem 0', 
-                        marginTop: '-85px',
-                        minHeight:'20vw', 
-                        maxHeight:'600px', 
-                        position: 'relative', 
-                        backgroundImage:'url(/sobre-nos/banner.png)', 
-                        backgroundPosition:'center center', 
-                        backgroundSize:'cover'
-                    }}
-                    >
-                        
-                    <div 
-                    className="text-light fw-bold fs-2"
-                    style={{
-                        padding: '.5rem 10vw',
-                        boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', 
-                        alignSelf:'flex-start', 
-                        backgroundColor:'rgba(0,30,96,0.85)'
-                    }}>
-                        Contato
-                        <div className="fw-normal fs-5">
-                            Fale conosco
-                        </div>
-                    </div>
-                    
-                </div>
+                <Banner title="Contato" subtitle="Fale conosco"/>
 
                 <div id="contato" className="container py-5">
                     <div className="row">

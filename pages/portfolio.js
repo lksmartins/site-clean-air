@@ -6,6 +6,7 @@ import svg1 from '../public/portfolio/icon1.svg'
 import svg2 from '../public/portfolio/icon2.svg'
 import svg3 from '../public/portfolio/icon3.svg'
 import Link from 'next/link'
+import Banner from '../components/PageBanner'
 
 const backendDomain = 'https://clean-air-backend-production.up.railway.app'
 
@@ -51,38 +52,9 @@ export default function Portfolio({portfolioUrl}) {
 
             <main>
 
-                <div id="banner" 
-                    className="container-fluid d-flex flex-column justify-content-center align-items-center"
-                    style={{
-                        overflow: 'hidden', 
-                        padding:'7rem 0', 
-                        marginTop: '-85px',
-                        minHeight:'20vw', 
-                        maxHeight:'600px', 
-                        position: 'relative', 
-                        backgroundImage:'url(/sobre-nos/banner.png)', 
-                        backgroundPosition:'center center', 
-                        backgroundSize:'cover'
-                    }}
-                    >
-                        
-                    <div 
-                    className="text-light fw-bold fs-2"
-                    style={{
-                        padding: '.5rem 10vw',
-                        boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', 
-                        alignSelf:'flex-start', 
-                        backgroundColor:'rgba(0,30,96,0.85)'
-                    }}>
-                        Portfólio
-                        <div className="fw-normal fs-5">
-                            Confira nosso catálogo
-                        </div>
-                    </div>
-                    
-                </div>
+                <Banner title="Portfólio" subtitle="Confira nosso catálogo"/>
 
-                <div id="portfolio" className="container p-5">
+                <div id="portfolio" className="container py-5">
                     <div className="row">
                         <div className="col-lg-7 col-sm-12 pe-lg-5">
                             <div className="d-flex flex-column justify-content-center w-100 h-100">

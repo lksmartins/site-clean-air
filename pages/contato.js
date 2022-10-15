@@ -125,10 +125,10 @@ export default function Contato() {
                     </div>
                 </div>
 
-                <div id="emails" className="container-fluid py-5" style={{overflow: 'hidden'}}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-8">
+                <div id="emails" className="container py-5">
+                    <div className="row text-center text-lg-start">
+                        <div className="col-lg-7">
+                            <div className="d-flex flex-column justify-content-center align-items-center align-items-lg-start w-100 h-100">
                                 <h3 className="mb-5">E-mails</h3>
 
                                 <h5 className="mb-0">Setor administrativo</h5>
@@ -140,10 +140,10 @@ export default function Contato() {
                                 <h5 className="mb-0">Departamento técnico</h5>
                                 <div className="mb-3">deptecnico@cleanairarcondicionado.com.br</div>
                             </div>
-                        
-                            <div className="col-lg-4">
-                                <img src="/contato/emails.png"/>
-                            </div>
+                        </div>
+                    
+                        <div className="col-lg-5 p-5 p-lg-2">
+                            <img className="img-fluid" src="/contato/emails.png"/>
                         </div>
                     </div>
                 </div>

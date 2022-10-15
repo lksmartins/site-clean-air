@@ -84,27 +84,57 @@ export default function Sobre() {
 
                 </Section>
 
-                <div id="carrierImg" 
-                    className="container-fluid d-flex flex-column justify-content-center align-items-center m-0"
-                    style={{overflow: 'hidden', padding:'8rem 0', minHeight:'40vw', maxHeight:'600px', position: 'relative', backgroundImage:'url(/sobre-nos/onde-estiver.png)', backgroundPosition:'center center', backgroundSize:'cover'}}
+                <div id="onde-estiver"
+                    className="container-fluid d-flex flex-column justify-content-center align-items-center"
+                    style={{
+                        overflow:           'hidden', 
+                        padding:            '10rem 0', 
+                        minHeight:          '20vw', 
+                        maxHeight:          '600px', 
+                        position:           'relative', 
+                        backgroundImage:    'url(/sobre-nos/onde-estiver.png)', 
+                        backgroundPosition: 'center center',
+                        backgroundSize:     'cover'
+                    }}
                     >
-                        
-                    <div 
-                    className="text-light fw-bold fs-2 px-5 py-2"
-                    style={{zIndex:'20', boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', alignSelf:'flex-start', backgroundColor:'rgba(0,30,96,0.75)'}}>
-                        Onde você estiver
-                    </div>
-                    <div
-                    className="text-light mt-3 ms-3 fs-5 px-3 py-2"
-                    style={{zIndex:'20', boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', width:'30vw', minWidth:'300px', maxWidth:'600px', alignSelf:'flex-start', backgroundColor:'rgba(0,163,224,0.75)'}}>
-                        Atuando desde 2010 na área de 
-                        refrigeração, a Clean Air tem levado
-                        seus serviços a todo o país, atendendo 
-                        clientes dos mais variados segmentos
-                        e localidades.
-                    </div>
-                </div>
 
+                    <div className="container">
+
+                        <div className="d-flex">
+                            <div 
+                                className="text-light fw-bold fs-2"
+                                style={{
+                                    marginTop: '1rem',
+                                }}>
+                                <div>
+                                    <div className="mb-2" style={{
+                                        marginRight: '3rem',
+                                        marginLeft: '-50vw',
+                                        padding: '.5rem 3rem .5rem 50vw',
+                                        boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', 
+                                        backgroundColor:'rgba(0,30,96,0.85)'
+                                    }}>
+                                        Onde você estiver
+                                    </div>
+                                    
+                                    <div className="fw-normal fs-5 p-3" style={{
+                                        boxShadow:'10px 10px 5px -6px rgba(0,0,0,0.75)', 
+                                        width:'clamp(320px, 40vw, 960px)', 
+                                        backgroundColor:'rgba(0,163,224,0.75)'
+                                    }}>
+                                        Atuando desde 2010 na área de 
+                                        refrigeração, a Clean Air tem levado
+                                        seus serviços a todo o país, atendendo 
+                                        clientes dos mais variados segmentos
+                                        e localidades.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                
                 <Section id="timeline" className="py-5 d-flex flex-column justify-content-center align-items-center">
 
                     <h3 className="fw-bold align-self-start">A Clean Air</h3>

@@ -27,7 +27,7 @@ export default function Home() {
         {id:'email', name:'E-mail', type:'email', value:''},
     ]
 
-    const defaultBgPos = 'center -7rem'
+    const defaultBgPos = 'center -3rem'
     const [backgroundPosition, setBackgroundPosition] = useState(defaultBgPos)
     const adjustBgPos = ()=>{
 
@@ -39,7 +39,7 @@ export default function Home() {
             newBgPos = 'center top'
         }
 
-        if( newBgPos != backgroundPosition ) setBackgroundPosition(newBgPos)
+        setBackgroundPosition(newBgPos)
     }
 
     useEffect(() => {

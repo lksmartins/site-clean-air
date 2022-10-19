@@ -54,6 +54,7 @@ export default function Servicos() {
         <>
             <Head>
                 <title>Serviços - Clean Air</title>
+                <meta name="description" content="A partir da qualificação, da eficiência e da agilidade de nossa equipe, fornecemos as melhores soluções para o seu sistema de ar condicionado. Confira as possibilidades e escolha a que melhor se adequa às suas necessidades." />
             </Head>
 
             <main>

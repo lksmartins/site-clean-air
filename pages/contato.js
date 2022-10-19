@@ -25,6 +25,7 @@ export default function Contato() {
         <>
             <Head>
                 <title>Contato - Clean Air</title>
+                <meta name="description" content="Fale conosco" />
             </Head>
 
             <main>

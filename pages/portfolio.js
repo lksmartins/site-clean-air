@@ -48,6 +48,7 @@ export default function Portfolio({portfolioUrl}) {
         <>
             <Head>
                 <title>Portfólio - Clean Air</title>
+                <meta name="description" content="A partir do conhecimento técnico e da eficiência de nossa equipe, conquistamos a confiança de diversos clientes importantes e construímos um vasto portfólio especializado em centrais térmicas de ar condicionado e sistemas de refrigeração." />
             </Head>
 
             <main>

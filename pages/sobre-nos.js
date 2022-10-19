@@ -26,6 +26,16 @@ export default function Sobre() {
         <>
             <Head>
                 <title>Sobre Nós - Clean Air</title>
+                <meta name="description" content="A Clean Air surgiu de um sonho de infância da família
+                                Maraschin, o qual se concretizou no ano de 2010. Apesar
+                                de todos os desafios, os irmãos Clarice, João, Cristina e 
+                                Clarita não apenas criaram uma empresa do ramo da 
+                                refrigeração, como também a estabeleceram no mercado, 
+                                transformando-a em um sólido nome do segmento. 
+                                Através de muito empenho, dedicação, formação e 
+                                qualificação profissional de toda a equipe, a Clean Air, cada 
+                                vez mais, tem adquirido reconhecimento pelos serviços 
+                                prestados, conquistando uma vasta carteira de clientes." />
             </Head>
 
             <main>
@@ -67,7 +77,7 @@ export default function Sobre() {
                     <Section id="bubbles_inverted" className={`${sectionStyles.grid} ${sectionStyles.col3} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
                             const img = <Image src={item.icon} layout="fill" objectFit="contain" alt={item.title} />
-                            return <Bubble key={item.icon} textClass="text-start" title={item.title} icon={img}>{item.text}</Bubble>
+                            return <Bubble key={item.title} textClass="text-start" title={item.title} icon={img}>{item.text}</Bubble>
                         })}
                     </Section>
                 </div>

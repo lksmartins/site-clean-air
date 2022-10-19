@@ -14,7 +14,7 @@ export default function FloatingWhats() {
             right: '0',
         }}>
             <a 
-            href={social.whatsapp.url} 
+            href={social.whatsappComercial.url} 
             target="_blank" 
             rel="noreferrer" 
             className="h-100 w-100" 

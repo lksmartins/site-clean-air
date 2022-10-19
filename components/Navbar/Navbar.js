@@ -83,7 +83,7 @@ export default function Navbar() {
             </div>
 
             <div className={`${styles.bottomBarMobile} justify-content-between`}>
-                <a href={social.whatsapp.url} target="_blank" rel="noreferrer" className="h-100" style={{padding:'0.75rem 0'}}><img className="h-100" src="/contato/icon2.png"/></a>
+                <a href={social.whatsappComercial.url} target="_blank" rel="noreferrer" className="h-100" style={{padding:'0.75rem 0'}}><img className="h-100" src="/contato/icon2.png"/></a>
                 <a onClick={()=>setShowMobileMenu(!showMobileMenu)}><i className="fa-solid fa-bars"></i></a>
             </div>
 

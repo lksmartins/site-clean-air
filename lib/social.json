@@ -1,5 +1,6 @@
 {
-    "instagram":{"url":"/"},
-    "linkedin":{"url":"/"},
-    "whatsapp":{"url":"https://api.whatsapp.com/send?phone=555192337112", "number":"(51) XXX-XXX-XXX"}
+    "instagram":{"url":"https://www.instagram.com/cleanairac"},
+    "linkedin":{"url":"https://linkedin.com/company/cleanairac"},
+    "whatsappComercial":{"url":"https://api.whatsapp.com/send?phone=5551998285393", "number":"(51) 998-285-393"},
+    "whatsappTecnico":{"url":"https://api.whatsapp.com/send?phone=5551997804816", "number":"(51) 997-804-816"}
 }

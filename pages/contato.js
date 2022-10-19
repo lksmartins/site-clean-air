@@ -16,7 +16,8 @@ export default function Contato() {
 
     const socials = [
         {title:'LinkedIn', text:'cleanair.ac', icon:'icon1', url:socialLinks.linkedin.url},
-        {title:'Whatsapp', text:socialLinks.whatsapp.number, icon:'icon2', url:socialLinks.whatsapp.url},
+        {title:'Comercial', text:socialLinks.whatsappComercial.number, icon:'icon2', url:socialLinks.whatsappComercial.url},
+        {title:'Técnico', text:socialLinks.whatsappTecnico.number, icon:'icon2', url:socialLinks.whatsappTecnico.url},
         {title:'Instagram', text:'@cleanair.ac', icon:'icon3', url:socialLinks.instagram.url},
     ]
 
@@ -111,11 +112,11 @@ export default function Contato() {
                             {
                                 socials.map(item=>{
                                     return (
-                                        <div key={item.title} className="col-lg-4 col-sm-12">
+                                        <div key={item.title} className="col-lg-3 col-sm-12">
                                             <div className="d-flex justify-content-center mt-5 mb-3" style={{maxHeight:'6rem', position: 'relative'}}>
-                                                <Link href={item.url}><a><img className="img-fluid" src={`/contato/${item.icon}.png`}/></a></Link>
+                                                <Link href={item.url}><a target="_blank"><img className="img-fluid" src={`/contato/${item.icon}.png`}/></a></Link>
                                             </div>
-                                            <Link href={item.url}><a>
+                                            <Link href={item.url}><a target="_blank">
                                                 <h4 className="mb-0 text-light">{item.title}</h4>
                                                 <div>{item.text}</div>
                                             </a></Link>

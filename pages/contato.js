@@ -15,10 +15,10 @@ export default function Contato() {
     ]
 
     const socials = [
-        {title:'LinkedIn', text:'cleanair.ac', icon:'icon1', url:socialLinks.linkedin.url},
+        {title:'LinkedIn', text:'cleanairac', icon:'icon1', url:socialLinks.linkedin.url},
         {title:'Comercial', text:socialLinks.whatsappComercial.number, icon:'icon2', url:socialLinks.whatsappComercial.url},
         {title:'Técnico', text:socialLinks.whatsappTecnico.number, icon:'icon2', url:socialLinks.whatsappTecnico.url},
-        {title:'Instagram', text:'@cleanair.ac', icon:'icon3', url:socialLinks.instagram.url},
+        {title:'Instagram', text:'@cleanairac', icon:'icon3', url:socialLinks.instagram.url},
     ]
 
     return (

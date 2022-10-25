@@ -235,7 +235,7 @@ export default function Servicos() {
                 <div id="projetos" className="container px-4 px-lg-0 py-5 my-4">
                     <div className="row">
                         <div className="col-lg-5 col-sm-12 mb-2 mb-lg-0 px-lg-5">
-                            <img className="img-fluid mb-3" src="servicos/projetos.png"/>
+                            <img className="img-fluid mb-3" src="servicos/PROJETO.png"/>
                         </div>
                         <div className="col-lg-7 col-sm-12 d-flex flex-column justify-content-center">
                             <h3 className="mb-3 fw-black">Projetos</h3>

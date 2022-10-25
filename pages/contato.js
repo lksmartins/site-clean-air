@@ -112,7 +112,7 @@ export default function Contato() {
                             {
                                 socials.map(item=>{
                                     return (
-                                        <div key={item.title} className="col-lg-3 col-sm-12">
+                                        <div key={item.title} className="col">
                                             <div className="d-flex justify-content-center mt-5 mb-3" style={{maxHeight:'6rem', position: 'relative'}}>
                                                 <Link href={item.url}><a target="_blank"><img className="img-fluid" src={`/contato/${item.icon}.png`}/></a></Link>
                                             </div>

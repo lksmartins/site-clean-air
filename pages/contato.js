@@ -17,7 +17,6 @@ export default function Contato() {
     const socials = [
         {title:'LinkedIn', text:'cleanairac', icon:'icon1', url:socialLinks.linkedin.url},
         {title:'Whatsapp', text:'Comercial', icon:'icon2', url:socialLinks.whatsappComercial.url},
-        {title:'Whatsapp', text:'Técnico', icon:'icon2', url:socialLinks.whatsappTecnico.url},
         {title:'Instagram', text:'@cleanairac', icon:'icon3', url:socialLinks.instagram.url},
     ]
 

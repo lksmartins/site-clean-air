@@ -61,9 +61,28 @@
     //background-color: white;
     z-index: 100;
 
-    /* * {
-        outline: 1px solid red;
-    } */
+    * {
+        transition: all 0.3s ease;
+    }
+
+    &.scrolling{
+        .topBar{
+            height: 50px;
+            padding: 0.5rem !important;
+
+            .logo{
+                max-width: 160px !important;
+            }
+            .partners{
+                width: 10% !important;
+                min-width: 100px;
+            }
+        }
+
+        .bottomBar{
+            height: 36px !important;
+        }
+    }
 
     .container {
         max-width: $maxWidth;

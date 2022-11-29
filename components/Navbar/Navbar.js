@@ -13,11 +13,49 @@ import social from '../../lib/social.json'
 export default function Navbar() {
 
     const router = useRouter()
+    let lastScroll = 0
     const [showMobileMenu, setShowMobileMenu] = useState(false)
+    const [navbarClasses, setNavbarClasses] = useState(styles.navbar)
 
     useEffect(()=>{
         setShowMobileMenu(false)
     },[router])
+
+    // change navbar size on scroll
+    function handleScroll(){
+
+        if( window === undefined){
+            return
+        }
+
+        let thisClass
+        // mobile logic
+        if( window.innerWidth <= 920 ){
+            if( window.scrollY < lastScroll ){
+                thisClass=styles.navbar
+            }
+            else{
+                thisClass=`${styles.navbar} ${styles.scrolling}`
+            }
+        }
+        else{
+            if( window.scrollY == 0 ){
+                thisClass=styles.navbar
+            }
+            else{
+                thisClass=`${styles.navbar} ${styles.scrolling}`
+            }
+        }
+
+        setNavbarClasses(thisClass)
+        // navbarClasses==1?styles.navbar:`${styles.navbar} ${styles.scrolling}
+        //if( thisClass == styles.navbar ){ setMobileClass('hidden') }
+        lastScroll = window.scrollY
+    }
+
+    useEffect(()=>{
+        window.addEventListener("scroll", handleScroll)
+    },[])
 
     return (
     <>
@@ -42,7 +80,7 @@ export default function Navbar() {
             </div>
         </nav>
             
-        <nav className={styles.navbar}>
+        <nav className={navbarClasses}>
             <div className={styles.topBar}>
                 <div className={styles.container}>
                     <div className={styles.logo}>

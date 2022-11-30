@@ -3,7 +3,6 @@
   margin-top: -2rem;
   overflow: hidden;
 }
-
 .bannerSection img {
   left: unset !important;
   top: unset !important;
@@ -25,22 +24,18 @@
     height: 50vh;
   }
 }
-
 @media screen and (max-width: 425px) {
   .bannerSection {
     height: 30vh !important;
   }
 }
-
 @media screen and (max-width: 375px) {
   .bannerSection {
     height: 20vh !important;
   }
 }
-
 @media screen and (max-width: 320px) {
   .bannerSection {
     height: 20vh !important;
   }
-}
-/*# sourceMappingURL=BannerSectionTest.module.css.map */
+}/*# sourceMappingURL=BannerSectionTest.module.css.map */

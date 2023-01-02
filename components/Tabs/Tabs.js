@@ -11,7 +11,7 @@ export function Tabs({children, ...props}) {
         {
             Object.values(children).map((value,key) => {
                 return (  
-                    <div key={key} className={`${styles.label} ${currentChild==key ? styles.active : null}`} onClick={()=>setCurrentChild(key)}>{value.props.title}</div>
+                    <div key={key} className={`${styles.label}`} style={{backgroundColor:value.props.color}} onClick={()=>setCurrentChild(key)}>{value.props.title}</div>
                 )
             })
         }

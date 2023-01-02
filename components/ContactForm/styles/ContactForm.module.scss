@@ -184,18 +184,26 @@ $maxWidth: 302px;
             *{transition: all 0.3s ease;}
 
             button{
-                background: $buttonBackground;
+                background: rgb(61,26,110);
+                background: linear-gradient(90deg, rgba(61,26,110,1) 0%, rgba(66,144,224,1) 100%);
                 color: $buttonColor;
                 border: none; outline: none;
                 font-weight: 700;
-                font-size: 1rem !important;
-                width: 100%;
+                font-size: 1.25rem !important;
+                width: auto;
+                border-radius: 2rem;
                 max-width: $maxWidth;
+                padding: .5rem 2rem !important;
+                transition: all 0.3s ease;
 
                 *{color: $buttonColor;}
 
                 &:first-of-type{
                     padding: 0.5rem 0.8rem;
+                }
+
+                &:hover{
+                    transform: scale(1.1);
                 }
             }
             

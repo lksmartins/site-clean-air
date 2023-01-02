@@ -1,0 +1,39 @@
+.tabs {
+  width: 100%;
+}
+
+.tabs .tabLabels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 2px solid #00A3FF;
+}
+
+.tabs .tabLabels .label {
+  padding: 10px 20px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid #151515;
+  border-radius: 6px 6px 0 0;
+}
+
+.tabs .tabLabels .label:hover {
+  border: 1px solid #00A3FF;
+}
+
+.tabs .tabLabels .label.active {
+  background: #00A3FF;
+  border: 1px solid #00A3FF;
+}
+
+.tabs .tab {
+  padding-top: 20px;
+}
+/*# sourceMappingURL=Tabs.module.css.map */

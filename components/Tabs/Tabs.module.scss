@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+.tabs{
+    width: 100%;
+    $labelBg: $blue;
+
+    .tabLabels{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-bottom: 2px solid $labelBg;
+
+        .label{
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid $background;
+            border-radius: 6px 6px 0 0;
+
+            &:hover{
+                border: 1px solid $labelBg;
+            }
+
+            &.active{
+                background: $labelBg;
+                //color: $background;
+                border: 1px solid $labelBg;
+            }
+        }
+    }
+
+    .tab{
+        padding-top: 20px;
+    }
+}

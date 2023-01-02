@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import ContactForm from '../components/ContactForm/ContactForm'
-import { findValueById, findFilenameById } from '../lib/helper'
-import socialLinks from '../lib/social.json'
+import ContactForm from '@components/ContactForm/ContactForm'
+import { findValueById, findFilenameById } from '@lib/helper'
+import socialLinks from '@lib/social.json'
 import Link from 'next/link'
-import Banner from '../components/PageBanner'
+import Banner from '@components/PageBanner'
+import {Tabs, Tab} from '@components/Tabs/Tabs'
 
 export default function Contato() {
 
@@ -12,6 +13,12 @@ export default function Contato() {
         {id:'email', name:'E-mail', type:'email', value:''},
         {id:'message', name:'Mensagem', type:'text', value:''},
         {id:'cv', name:'Currículo', type:'file', value:''}
+    ]
+
+    const talkToUsFields = [
+        {id:'name', name:'Nome', type:'text', value:''},
+        {id:'email', name:'E-mail', type:'email', value:''},
+        {id:'message', name:'Mensagem', type:'text', value:''}
     ]
 
     const socials = [
@@ -66,32 +73,69 @@ export default function Contato() {
                         <div className="col-lg-7 col-sm-12 d-flex flex-column justify-content-center align-items-center">
                             
                             <div style={{maxWidth:'362px'}}>
-                                <div className="mb-3 mt-5 mt-lg-0" style={{padding:'0 1.8rem'}}>
-                                    <h3 className="fw-black">Trabalhe conosco</h3>
-                                    <div>Queremos conhecer o seu talento, venha fazer parte da nossa equipe.</div>
-                                </div>
-                                
-                                <ContactForm
-                                    fields={fields}
-                                    apiBody={(state)=>{
-                                            return {  
-                                                recipient: 'martins@chavemestra.net',
-                                                name: findValueById(state, 'name'), 
-                                                email: findValueById(state, 'email'), 
-                                                message: findValueById(state, 'message'),
-                                                cv: findFilenameById(state, 'cv')
-                                            }
-                                        }
-                                    }
-                                    errorMessage="Houve um erro na tentativa de enviar seu email. Recarregue a página e tente novamente."
-                                    successMessage="Email enviado com sucesso!"
-                                    onSuccess={(response)=>{
-                                        
-                                    }}
 
-                                    footerLeftEl={null}
-                                    buttonText="Enviar"
-                                />
+                                <Tabs>
+                                    <Tab title="Trabalhe conosco">
+                                        <div className="mb-3 mt-5 mt-lg-0" style={{padding:'0 1.8rem'}}>
+                                            <h3 className="fw-black">Trabalhe conosco</h3>
+                                            <div>Queremos conhecer o seu talento, venha fazer parte da nossa equipe.</div>
+                                        </div>
+                                        
+                                        <ContactForm
+                                            fields={fields}
+                                            apiBody={(state)=>{
+                                                    return {  
+                                                        recipient: 'martins@chavemestra.net',
+                                                        name: findValueById(state, 'name'), 
+                                                        email: findValueById(state, 'email'), 
+                                                        message: findValueById(state, 'message'),
+                                                        cv: findFilenameById(state, 'cv')
+                                                    }
+                                                }
+                                            }
+                                            errorMessage="Houve um erro na tentativa de enviar seu email. Recarregue a página e tente novamente."
+                                            successMessage="Email enviado com sucesso!"
+                                            onSuccess={(response)=>{
+                                                
+                                            }}
+
+                                            footerLeftEl={null}
+                                            buttonText="Enviar"
+                                        />
+                                    
+                                    </Tab>
+
+                                    <Tab title="Fale conosco">
+                                        <div className="mb-3 mt-5 mt-lg-0" style={{padding:'0 1.8rem'}}>
+                                            <h3 className="fw-black">Fale conosco</h3>
+                                            <div>Outro texto.</div>
+                                        </div>
+                                        
+                                        <ContactForm
+                                            fields={talkToUsFields}
+                                            hasFile={false}
+                                            apiBody={(state)=>{
+                                                    return {  
+                                                        recipient: 'martins@chavemestra.net',
+                                                        name: findValueById(state, 'name'), 
+                                                        email: findValueById(state, 'email'), 
+                                                        message: findValueById(state, 'message')
+                                                    }
+                                                }
+                                            }
+                                            errorMessage="Houve um erro na tentativa de enviar seu email. Recarregue a página e tente novamente."
+                                            successMessage="Email enviado com sucesso!"
+                                            onSuccess={(response)=>{
+                                                
+                                            }}
+
+                                            footerLeftEl={null}
+                                            buttonText="Enviar"
+                                        />
+                                    
+                                    </Tab>
+                                </Tabs>
+
                             </div>
                             
                             

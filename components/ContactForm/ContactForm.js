@@ -5,7 +5,7 @@ import styles from './styles/ContactForm.module.css'
 import axios from 'axios'
 export default function Form(props) {
 
-    const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
+    const { fields, hasFile, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
     const [state, setState] = useState(fields)
 
     const [sentMessage, setSentMessage] = useState('')
@@ -100,14 +100,7 @@ export default function Form(props) {
         const name = state[0].value
         const email = state[1].value
         const message = state[2].value
-        const cv = state[3].value
-
-        const formData = new FormData()
-        formData.append('name', name)
-        formData.append('email', email)
-        formData.append('message', message)
-        formData.append('cv', cv)
-        //formData.append('cv', new Blob([cv],{ type: 'application/pdf'}))
+        const cv = state[3]?.value || null
 
         /*
         1. create entry to get applicantId
@@ -126,29 +119,7 @@ export default function Form(props) {
         console.log('applicantRes.ok')
         console.log(applicantRes.ok)
 
-        if( !applicantRes.ok ){
-            setButtonDisabled(false)
-            setButtonContent(buttonText)
-            setError(true)
-            setSentMessage(errorMessage)
-            return
-        }
-
-        const appData = await applicantRes.json()
-        const {applicantId} = appData
-
-        const entryFormData = new FormData() // pure javascript nothing to do with react
-        entryFormData.append('ref', 'api::applicant.applicant') //'ref' The collection we want to use
-        entryFormData.append('refId', applicantId) //'refId' The applicantId
-        entryFormData.append('field', 'cv') // the relation field
-        entryFormData.append('files', cv) // the file itself
-        
-        const uploadRes = await fetch('/api/uploadFile', {
-            method: 'POST',
-            body: entryFormData
-        })
-
-        if( uploadRes.ok ){
+        const setSendSuccess = (uploadRes)=>{
             setButtonDisabled(false)
             setButtonContent(buttonText)
             
@@ -157,11 +128,50 @@ export default function Form(props) {
         
             onSuccess(uploadRes)
         }
-        else{
+
+        const setSendError = ()=>{
             setButtonDisabled(false)
             setButtonContent(buttonText)
             setError(true)
             setSentMessage(errorMessage)
+        }
+
+        if( !applicantRes.ok ){
+            setSendError()
+            return
+        }
+
+        if( hasFile ){
+
+            const appData = await applicantRes.json()
+            const {applicantId} = appData
+
+            const entryFormData = new FormData() // pure javascript nothing to do with react
+            entryFormData.append('ref', 'api::applicant.applicant') //'ref' The collection we want to use
+            entryFormData.append('refId', applicantId) //'refId' The applicantId
+            entryFormData.append('field', 'cv') // the relation field
+            entryFormData.append('files', cv) // the file itself
+            
+            const uploadRes = await fetch('/api/uploadFile', {
+                method: 'POST',
+                body: entryFormData
+            })
+            
+            if( uploadRes.ok ){
+                setSendSuccess(uploadRes)
+            }
+            else{
+                setSendError()
+            }
+
+        }
+        else{
+            if( applicantRes.ok ){
+                setSendSuccess('Email enviado com sucesso.')
+            }
+            else{
+                setSendError()
+            }
         }
         
     }
@@ -220,4 +230,5 @@ Form.propTypes = {
     onSuccess: PropTypes.func,
     footerLeftEl: PropTypes.element || null,
     buttonText: PropTypes.string,
+    hasFile: PropTypes.bool || true,
 }

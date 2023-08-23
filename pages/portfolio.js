@@ -32,7 +32,7 @@ export async function getServerSideProps() {
         console.error(error.message)
         return {
             props: {
-                portfolioUrl: ''
+                portfolioUrl: '/pdf/PORTFOLIO.pdf'
             },
         }
     }

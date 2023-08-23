@@ -12,20 +12,31 @@ const backendDomain = 'https://clean-air-backend-production.up.railway.app'
 
 export async function getServerSideProps() {
 
-    const res = await fetch(`${process.env.BACK_DOMAIN}/api/portfolio?populate=*`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${process.env.BACK_TOKEN}`,
+    try {
+        const res = await fetch(`${process.env.BACK_DOMAIN}/api/portfolio?populate=*`, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${process.env.BACK_TOKEN}`,
+            }
+        })
+    
+        const data = await res.json()
+    
+        return {
+          props: {
+            portfolioUrl: data.data.attributes.file.data.attributes.url
+          },
         }
-    })
-
-    const data = await res.json()
-
-    return {
-      props: {
-        portfolioUrl: data.data.attributes.file.data.attributes.url
-      },
     }
+    catch (error) {
+        console.error(error.message)
+        return {
+            props: {
+                portfolioUrl: ''
+            },
+        }
+    }
+    
   }
 
 const PortfolioLink = (props)=>{

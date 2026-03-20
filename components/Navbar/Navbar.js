@@ -4,8 +4,8 @@ import menuItems from '../../lib/menuItems.json'
 import Image from 'next/image'
 import logo from '../../public/logo-azul.png'
 import logoBranco from '../../public/logo-branco.png'
-import logoMidea from '../../public/midea.svg'
-import logoCarrier from '../../public/carrier.svg'
+import LogoMidea from '../../public/midea.svg'
+import LogoCarrier from '../../public/carrier.svg'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import social from '../../lib/social.json'
@@ -93,14 +93,10 @@ export default function Navbar() {
                     </div>
                     <div className={styles.partners}>
                         <div className={styles.item}>
-                            <Image
-                                src={logoMidea}
-                                alt="Clean Air logo" />
+                            <LogoMidea style={{width:'100%', height:'100%'}} />
                         </div>
                         <div className={styles.item}>
-                            <Image
-                                src={logoCarrier}                                
-                                alt="Clean Air logo" />
+                            <LogoCarrier style={{width:'100%', height:'100%'}} />
                         </div>
                     </div>
                 </div>

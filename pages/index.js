@@ -121,7 +121,8 @@ export default function Home() {
 
                 <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col4} ${sectionStyles.gap4}`}>
                     {BubbleContent.map(item=>{
-                        const img = <Image src={bubbleIcons[item.icon]} fill style={{objectFit:'contain'}} alt={item.title} />
+                        const SvgIcon = bubbleIcons[item.icon]
+                        const img = <SvgIcon style={{width:'100%', height:'100%'}} />
                         return <Bubble key={item.icon} title={item.title} icon={img}>{item.text}</Bubble>
                     })}
                 </Section>

@@ -126,9 +126,10 @@ export default function Portfolio({portfolioUrl}) {
                     <div className="mb-4 text-center text-lg-start">Alguns dos benefícios adquiridos ao contratar a empresa.</div>
                     <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col3} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
-                            const img = <Image src={item.icon} fill style={{objectFit:'contain'}} alt={item.title} />
+                            const SvgIcon = item.icon
+                            const img = <SvgIcon style={{width:'100%', height:'100%'}} />
                             return <div key={item.title} className="d-flex flex-column justify-content-center align-items-center w-100 gap-1">
-                                        <div className="w-100" style={{height: '8rem', position: 'relative'}}>{img}</div>
+                                        <div className="w-100" style={{height: '8rem'}}>{img}</div>
                                         <div className="fw-bold fs-5 p-2 px-5 text-center">{item.title}</div>
                                     </div>
                         })}

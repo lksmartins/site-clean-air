@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import ContactForm from '@components/ContactForm/ContactForm'
+import NewsForm from '@components/NewsForm'
 import { findValueById, findFilenameById } from '@lib/helper'
 import socialLinks from '@lib/social.json'
 import Link from 'next/link'
@@ -79,58 +80,35 @@ export default function Contato() {
                                         <div className="text-center mb-3 mt-0 px-2 py-4" style={{backgroundColor:'#001E60', color:'white'}}>
                                             Fique por dentro das nossas atualizações.<br/>Envie sugestões, elogios e/ou críticas.
                                         </div>
-                                        
-                                        <ContactForm
+
+                                        <NewsForm
                                             fields={talkToUsFields}
-                                            hasFile={false}
-                                            apiBody={(state)=>{
-                                                    return {  
-                                                        recipient: 'martins@chavemestra.net',
-                                                        name: findValueById(state, 'name'), 
-                                                        email: findValueById(state, 'email'), 
-                                                        message: findValueById(state, 'message')
-                                                    }
-                                                }
-                                            }
+                                            apiBody={(state) => ({
+                                              name: findValueById(state, 'name'),
+                                              email: findValueById(state, 'email'),
+                                              message: findValueById(state, 'message'),
+                                            })}
                                             errorMessage="Houve um erro na tentativa de enviar seu email. Recarregue a página e tente novamente."
                                             successMessage="Email enviado com sucesso!"
-                                            onSuccess={(response)=>{
-                                                
-                                            }}
-
+                                            onSuccess={() => {}}
                                             footerLeftEl={null}
                                             buttonText="Enviar"
                                         />
-                                    
                                     </Tab>
 
                                     <Tab title="Vagas" color="#00A3E0">
                                         <div className="text-center mb-3 mt-0 px-2 py-4" style={{backgroundColor:'#00A3E0', color:'white'}}>
                                             Queremos conhecer o seu talento, venha fazer parte da nossa equipe.
                                         </div>
-                                        
+
                                         <ContactForm
                                             fields={fields}
-                                            apiBody={(state)=>{
-                                                    return {  
-                                                        recipient: 'martins@chavemestra.net',
-                                                        name: findValueById(state, 'name'), 
-                                                        email: findValueById(state, 'email'), 
-                                                        message: findValueById(state, 'message'),
-                                                        cv: findFilenameById(state, 'cv')
-                                                    }
-                                                }
-                                            }
                                             errorMessage="Houve um erro na tentativa de enviar seu email. Recarregue a página e tente novamente."
                                             successMessage="Email enviado com sucesso!"
-                                            onSuccess={(response)=>{
-                                                
-                                            }}
-
+                                            onSuccess={() => {}}
                                             footerLeftEl={null}
                                             buttonText="Enviar"
                                         />
-                                    
                                     </Tab>
                                     
                                 </Tabs>
@@ -157,12 +135,12 @@ export default function Contato() {
                                     return (
                                         <div key={item.title} className="col">
                                             <div className="d-flex justify-content-center mt-5 mb-3" style={{maxHeight:'6rem', position: 'relative'}}>
-                                                <Link href={item.url}><a target="_blank"><img className="img-fluid" src={`/contato/${item.icon}.png`}/></a></Link>
+                                                <Link href={item.url} target="_blank"><img className="img-fluid" src={`/contato/${item.icon}.png`}/></Link>
                                             </div>
-                                            <Link href={item.url}><a target="_blank">
+                                            <Link href={item.url} target="_blank">
                                                 <h4 className="mb-0 text-light">{item.title}</h4>
                                                 <div>{item.text}</div>
-                                            </a></Link>
+                                            </Link>
                                         </div>
                                     )
                                 })

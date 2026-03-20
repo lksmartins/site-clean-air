@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import ContactForm from '@components/ContactForm/ContactForm'
 import NewsForm from '@components/NewsForm'
-import { findValueById, findFilenameById } from '@lib/helper'
+import { findValueById } from '@lib/helper'
 import socialLinks from '@lib/social.json'
 import Link from 'next/link'
 import Banner from '@components/PageBanner'

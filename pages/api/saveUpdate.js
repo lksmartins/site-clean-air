@@ -8,12 +8,16 @@ const supabase = createClient(
 
 const mailerSend = new MailerSend({ apiKey: process.env.MAILERSEND_API_KEY })
 
+const escapeHtml = (str) =>
+  String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
 
-  const { name, email, message } = req.body
+  const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+  const { name, email, message } = body
 
   if (!name || !email || !message) {
     return res.status(400).json({ message: 'name, email, and message are required' })
@@ -38,9 +42,9 @@ export default async function handler(req, res) {
     .setTo(recipients)
     .setSubject(`Nova mensagem de ${name}`)
     .setHtml(
-      `<p><strong>Nome:</strong> ${name}</p>
-       <p><strong>Email:</strong> ${email}</p>
-       <p><strong>Mensagem:</strong> ${message}</p>`
+      `<p><strong>Nome:</strong> ${escapeHtml(name)}</p>
+       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+       <p><strong>Mensagem:</strong> ${escapeHtml(message)}</p>`
     )
     .setText(`Nome: ${name}\nEmail: ${email}\nMensagem: ${message}`)
 

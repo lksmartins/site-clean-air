@@ -2,10 +2,9 @@ import React, { useState, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import PropTypes from 'prop-types'
 import styles from './styles/ContactForm.module.css'
-import axios from 'axios'
 export default function Form(props) {
 
-    const { fields, hasFile, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
+    const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
     const [state, setState] = useState(fields)
 
     const [sentMessage, setSentMessage] = useState('')
@@ -45,17 +44,15 @@ export default function Form(props) {
     }
 
     async function handleSubmit(e) {
-
         e.preventDefault()
 
         setRecaptchaHelp(false)
         setSentMessage('')
         setError(false)
 
-        if( window.location.hostname != 'localhost'){
+        if (window.location.hostname !== 'localhost') {
             const recaptchaValue = recaptchaRef.current.getValue()
-
-            if( recaptchaValue=='' ){
+            if (recaptchaValue === '') {
                 setRecaptchaHelp(true)
                 return false
             }
@@ -64,116 +61,54 @@ export default function Form(props) {
         let filledFields = 0
         let requiredFields = 0
 
-        state.map(item=>{
-            if( item.type == 'text' || item.type == 'email' ){
-
+        state.map(item => {
+            if (item.type === 'text' || item.type === 'email') {
                 requiredFields++
-
-                if( item.value != '' ){
-                    filledFields++
-                }
+                if (item.value !== '') filledFields++
             }
         })
 
-        if( filledFields != requiredFields ){
+        if (filledFields !== requiredFields) {
             setError(true)
             setSentMessage('Algum campo ficou vazio.')
             return false
         }
 
-        // match passwords
-        if( props.matchPasswords ){
-            const passwords = props.matchPasswords(state)
-
-            if( passwords[0] != passwords[1] ){
-                setError(true)
-                setSentMessage('As senhas devem ser iguais')
-                return false
-            }
-        }
-
-        // load button
         setButtonContent(<i className="fa-solid fa-spin fa-spinner"></i>)
         setButtonDisabled(true)
-        
-        //console.log({...state})
+
         const name = state[0].value
         const email = state[1].value
         const message = state[2].value
         const cv = state[3]?.value || null
 
-        /*
-        1. create entry to get applicantId
-        2. upload file with association
-        */
+        const formData = new FormData()
+        formData.append('name', name)
+        formData.append('email', email)
+        formData.append('message', message)
+        if (cv) formData.append('cv', cv)
 
-        const applicantRes = await fetch('/api/saveApplicant', {
-            method: 'POST',
-            body: JSON.stringify({name,email,message}),
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+        try {
+            const res = await fetch('/api/uploadFile', {
+                method: 'POST',
+                body: formData,
+            })
+
+            if (res.ok) {
+                setButtonDisabled(false)
+                setButtonContent(buttonText)
+                setError(false)
+                setSentMessage(successMessage)
+                onSuccess(await res.json())
+            } else {
+                throw new Error('Server error')
             }
-        })
-
-        console.log('applicantRes.ok')
-        console.log(applicantRes.ok)
-
-        const setSendSuccess = (uploadRes)=>{
-            setButtonDisabled(false)
-            setButtonContent(buttonText)
-            
-            setError(false)
-            setSentMessage(successMessage)
-        
-            onSuccess(uploadRes)
-        }
-
-        const setSendError = ()=>{
+        } catch {
             setButtonDisabled(false)
             setButtonContent(buttonText)
             setError(true)
             setSentMessage(errorMessage)
         }
-
-        if( !applicantRes.ok ){
-            setSendError()
-            return
-        }
-
-        if( hasFile ){
-
-            const appData = await applicantRes.json()
-            const {applicantId} = appData
-
-            const entryFormData = new FormData() // pure javascript nothing to do with react
-            entryFormData.append('ref', 'api::applicant.applicant') //'ref' The collection we want to use
-            entryFormData.append('refId', applicantId) //'refId' The applicantId
-            entryFormData.append('field', 'cv') // the relation field
-            entryFormData.append('files', cv) // the file itself
-            
-            const uploadRes = await fetch('/api/uploadFile', {
-                method: 'POST',
-                body: entryFormData
-            })
-            
-            if( uploadRes.ok ){
-                setSendSuccess(uploadRes)
-            }
-            else{
-                setSendError()
-            }
-
-        }
-        else{
-            if( applicantRes.ok ){
-                setSendSuccess('Email enviado com sucesso.')
-            }
-            else{
-                setSendError()
-            }
-        }
-        
     }
 
     return(
@@ -223,12 +158,11 @@ export default function Form(props) {
 
 Form.propTypes = {
     fields: PropTypes.array,
-    apiBody: PropTypes.func, 
+    apiBody: PropTypes.func,
     matchPasswords: PropTypes.func,
-    errorMessage: PropTypes.string, 
-    successMessage: PropTypes.string, 
+    errorMessage: PropTypes.string,
+    successMessage: PropTypes.string,
     onSuccess: PropTypes.func,
     footerLeftEl: PropTypes.element || null,
     buttonText: PropTypes.string,
-    hasFile: PropTypes.bool || true,
 }

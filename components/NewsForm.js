@@ -19,8 +19,6 @@ export default function Form(props) {
     const [ recaptchaHelp, setRecaptchaHelp ] = useState(false)
     const recaptchaRef = useRef()
 
-    const backendDomain = 'https://clean-air-backend-production.up.railway.app'
-
     function handleInputChange(e) {
 
         const target = e.target
@@ -92,7 +90,7 @@ export default function Form(props) {
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
-        fetch(`/api/saveEmail`, {
+        fetch(`/api/saveUpdate`, {
             method: 'POST',
             body: JSON.stringify(apiBody(state))
         })

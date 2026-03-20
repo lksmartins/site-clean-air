@@ -35,7 +35,7 @@ export default async function handler(req, res) {
 
   // Send email notification via MailerSend
   const sentFrom = new Sender(process.env.MAILERSEND_FROM_EMAIL, 'Clean Air Site')
-  const recipients = [new Recipient('comercial@cleanairarcondicionado.com.br', 'Comercial')]
+  const recipients = [new Recipient(process.env.MAILERSEND_TO_EMAIL, 'Comercial')]
 
   const emailParams = new EmailParams()
     .setFrom(sentFrom)

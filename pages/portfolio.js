@@ -24,7 +24,7 @@ export async function getServerSideProps() {
     
         return {
           props: {
-            portfolioUrl: data.data.attributes.file.data.attributes.url
+            portfolioUrl: process.env.PORTFOLIO_URL
           },
         }
     }
@@ -32,7 +32,7 @@ export async function getServerSideProps() {
         console.error(error.message)
         return {
             props: {
-                portfolioUrl: '/pdf/PORTFOLIO.pdf'
+                portfolioUrl: process.env.PORTFOLIO_URL || '/pdf/PORTFOLIO.pdf'
             },
         }
     }
@@ -41,8 +41,8 @@ export async function getServerSideProps() {
 
 const PortfolioLink = (props)=>{
 
-    return <Link href={backendDomain+props.url} download="clean_air_portfolio.pdf" rel="noreferrer">
-        <a target="_blank" className="link fw-bold">{props.children}</a>
+    return <Link href={props.url} download="clean_air_portfolio.pdf" rel="noreferrer" target="_blank" className="link fw-bold">
+        {props.children}
     </Link>
 
 }
@@ -126,7 +126,7 @@ export default function Portfolio({portfolioUrl}) {
                     <div className="mb-4 text-center text-lg-start">Alguns dos benefícios adquiridos ao contratar a empresa.</div>
                     <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col3} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
-                            const img = <Image src={item.icon} layout="fill" objectFit="contain" alt={item.title} />
+                            const img = <Image src={item.icon} fill style={{objectFit:'contain'}} alt={item.title} />
                             return <div key={item.title} className="d-flex flex-column justify-content-center align-items-center w-100 gap-1">
                                         <div className="w-100" style={{height: '8rem', position: 'relative'}}>{img}</div>
                                         <div className="fw-bold fs-5 p-2 px-5 text-center">{item.title}</div>

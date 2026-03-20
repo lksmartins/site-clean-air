@@ -66,7 +66,7 @@ export default function Servicos() {
                     <div className="mb-4 text-start">A partir da qualificação, da eficiência e da agilidade de nossa equipe, fornecemos as melhores soluções para o seu sistema de ar condicionado. Confira as possibilidades e escolha a que melhor se adequa às suas necessidades.</div>
                     <Section id="bubbles" className={`${sectionStyles.grid} ${sectionStyles.col4} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
-                            const img = <Image src={item.icon} layout="fill" objectFit="contain" alt={item.title} />
+                            const img = <Image src={item.icon} fill style={{objectFit:'contain'}} alt={item.title} />
                             return <Bubble key={item.icon} title={item.title} icon={img}/>
                         })}
                     </Section>

@@ -64,15 +64,15 @@ export default function Navbar() {
             <div className={styles.filler} onClick={()=>setShowMobileMenu(false)}></div>
             <div className={styles.menu}>
                 <div className={styles.menuItem}><Link href="/">
-                    <a><Image
+                    <Image
                         src={logoBranco}
-                        layout="fill"
-                        objectFit="contain"
-                        alt="Clean Air logo branco" /></a></Link></div>
+                        fill
+                        style={{objectFit:'contain'}}
+                        alt="Clean Air logo branco" /></Link></div>
                 {
                     menuItems.map(item => {
                         return <div className={styles.menuItem} key={item.id}>
-                                    <Link href={item.url}><a className={router.pathname==item.url?'link':''}>{item.text}</a></Link>
+                                    <Link href={item.url} className={router.pathname==item.url?'link':''}>{item.text}</Link>
                                 </div>
                     })
                 }
@@ -84,12 +84,12 @@ export default function Navbar() {
             <div className={styles.topBar}>
                 <div className={styles.container}>
                     <div className={styles.logo}>
-                        <Link href="/"><a><Image
+                        <Link href="/"><Image
                             priority
                             src={logo}
-                            layout="fill"
-                            objectFit="contain"
-                            alt="Clean Air logo" /></a></Link>
+                            fill
+                            style={{objectFit:'contain'}}
+                            alt="Clean Air logo" /></Link>
                     </div>
                     <div className={styles.partners}>
                         <div className={styles.item}>
@@ -112,7 +112,7 @@ export default function Navbar() {
                         {
                             menuItems.map(item => {
                                 return <div className={styles.menuItem} key={item.id}>
-                                            <Link href={item.url}><a className={router.pathname==item.url?'link':''}>{item.text}</a></Link>
+                                            <Link href={item.url} className={router.pathname==item.url?'link':''}>{item.text}</Link>
                                         </div>
                             })
                         }

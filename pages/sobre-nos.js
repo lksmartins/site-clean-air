@@ -76,7 +76,7 @@ export default function Sobre() {
                 <div id="bubbles" className="text-light px-4 px-lg-0 py-5 my-5" style={{backgroundColor:'#001E60'}}>
                     <Section id="bubbles_inverted" className={`${sectionStyles.grid} ${sectionStyles.col3} ${sectionStyles.gap4}`}>
                         {bubbleContent.map(item=>{
-                            const img = <Image src={item.icon} layout="fill" objectFit="contain" alt={item.title} />
+                            const img = <Image src={item.icon} fill style={{objectFit:'contain'}} alt={item.title} />
                             return <Bubble key={item.title} textClass="text-start" title={item.title} icon={img}>{item.text}</Bubble>
                         })}
                     </Section>

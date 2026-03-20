@@ -15,8 +15,8 @@ export default function footer() {
                         <Image
                             src="/logo-branco.png"
                             alt="logo Clean Air, ar condicionado"
-                            layout="fill"
-                            objectFit="contain"
+                            fill
+                            style={{objectFit:'contain'}}
                         />
                     </div>
                     <div className={styles.socials}>

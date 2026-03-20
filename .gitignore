@@ -33,3 +33,4 @@ yarn-error.log*
 
 /.history
 pnpm-lock.yaml
+.env

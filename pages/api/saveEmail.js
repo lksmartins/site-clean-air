@@ -1,33 +1,30 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_KEY
+)
 
 export default async function handler(req, res) {
-  
-    //const backendDomain = 'https://clean-air-backend-production.up.railway.app'
-
-    try {
-
-        const body = {data: JSON.parse(req.body)}
-        
-        fetch(`${process.env.BACK_DOMAIN}/api/emails`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${process.env.BACK_TOKEN}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-
-        })
-        .then(async(response)=>{
-            const data = await response.json()
-            res.status(200).json({status:200, data})
-        })
-        .catch(error=>{
-            throw new Error(error.message)
-        })
-
-    }
-    catch (error) {
-        throw new Error(error.message)
-    }
-    
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' })
   }
+
+  const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+  const { email } = body
+
+  if (!email) {
+    return res.status(400).json({ message: 'Email is required' })
+  }
+
+  const { error } = await supabase
+    .from('newsletter')
+    .insert({ email })
+
+  if (error) {
+    console.error(error)
+    return res.status(400).json({ message: error.message })
+  }
+
+  return res.status(200).json({ status: 200 })
+}

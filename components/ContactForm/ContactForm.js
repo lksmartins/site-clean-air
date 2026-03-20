@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './styles/ContactForm.module.css'
 export default function Form(props) {
 
-    const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
+    const { fields, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
     const [state, setState] = useState(fields)
 
     const [sentMessage, setSentMessage] = useState('')
@@ -158,7 +158,6 @@ export default function Form(props) {
 
 Form.propTypes = {
     fields: PropTypes.array,
-    apiBody: PropTypes.func,
     matchPasswords: PropTypes.func,
     errorMessage: PropTypes.string,
     successMessage: PropTypes.string,

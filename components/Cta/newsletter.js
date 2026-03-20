@@ -20,6 +20,7 @@ export default function Newsletter() {
     try {
       const res = await fetch('/api/saveEmail', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       })
 

@@ -92,6 +92,7 @@ export default function Form(props) {
         
         fetch(`/api/saveUpdate`, {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(apiBody(state))
         })
         .then(res=>{
@@ -117,6 +118,8 @@ export default function Form(props) {
                 })
             }
             else{
+                setButtonDisabled(false)
+                setButtonContent(buttonText)
                 setError(true)
                 setSentMessage('Houve um erro inesperado. Tente novamente.')
             }    

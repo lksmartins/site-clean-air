@@ -71,7 +71,7 @@ export default async function handler(req, res) {
       // Rollback: delete the job row so the form can be retried cleanly
       await supabase.from('jobs').delete().eq('id', jobId)
       console.error(storageError)
-      return res.status(400).json({ message: storageError.message, details: storageError })
+      return res.status(400).json({ message: 'File upload failed. Please try again.' })
     }
 
     // Clean up formidable's temp file

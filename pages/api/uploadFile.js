@@ -1,5 +1,4 @@
 import { Client, Databases, Storage, ID } from 'node-appwrite'
-import { InputFile } from 'node-appwrite/file'
 import formidable from 'formidable'
 import fs from 'fs'
 

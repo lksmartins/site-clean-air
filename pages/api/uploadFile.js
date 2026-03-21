@@ -1,16 +1,18 @@
-import { createClient } from '@supabase/supabase-js'
+import { Client, Databases, Storage, ID, InputFile } from 'node-appwrite'
 import formidable from 'formidable'
 import fs from 'fs'
-import { randomUUID } from 'crypto'
 
 export const config = {
   api: { bodyParser: false },
 }
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-)
+const client = new Client()
+  .setEndpoint(process.env.APPWRITE_ENDPOINT)
+  .setProject(process.env.APPWRITE_PROJECT_ID)
+  .setKey(process.env.APPWRITE_API_KEY)
+
+const databases = new Databases(client)
+const storage = new Storage(client)
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -39,52 +41,58 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'name, email, and message are required' })
   }
 
-  // Insert job application row
-  const { data: job, error: dbError } = await supabase
-    .from('jobs')
-    .insert({ name, email, message })
-    .select('id')
-    .single()
-
-  if (dbError) {
+  let job
+  try {
+    job = await databases.createDocument(
+      process.env.APPWRITE_DATABASE_ID,
+      process.env.APPWRITE_JOBS_COLLECTION_ID,
+      ID.unique(),
+      { name, email, message }
+    )
+  } catch (dbError) {
     console.error(dbError)
     return res.status(400).json({ message: dbError.message })
   }
 
-  const jobId = job.id
+  const jobId = job.$id
   const cvFile = files.cv
 
   if (cvFile) {
-    const fileBuffer = await fs.promises.readFile(cvFile.filepath)
-    const safeName = cvFile.originalFilename
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
-      .replace(/[^a-zA-Z0-9.\-_]/g, '_')               // replace unsafe chars
-    const storagePath = `${randomUUID()}-${safeName}`
+    let uploadedFile
+    try {
+      const fileBuffer = await fs.promises.readFile(cvFile.filepath)
+      const safeName = cvFile.originalFilename
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-zA-Z0-9.\-_]/g, '_')
 
-    const { error: storageError } = await supabase.storage
-      .from('cvs')
-      .upload(storagePath, fileBuffer, { contentType: cvFile.mimetype })
-
-    if (storageError) {
-      // Clean up formidable's temp file
+      uploadedFile = await storage.createFile(
+        process.env.APPWRITE_BUCKET_ID,
+        ID.unique(),
+        InputFile.fromBuffer(fileBuffer, safeName)
+      )
+    } catch (storageError) {
       await fs.promises.unlink(cvFile.filepath).catch(() => {})
-      // Rollback: delete the job row so the form can be retried cleanly
-      await supabase.from('jobs').delete().eq('id', jobId)
+      await databases.deleteDocument(
+        process.env.APPWRITE_DATABASE_ID,
+        process.env.APPWRITE_JOBS_COLLECTION_ID,
+        jobId
+      ).catch(() => {})
       console.error(storageError)
       return res.status(400).json({ message: 'File upload failed. Please try again.' })
     }
 
-    // Clean up formidable's temp file
     await fs.promises.unlink(cvFile.filepath).catch(() => {})
 
-    const { data: urlData } = supabase.storage.from('cvs').getPublicUrl(storagePath)
+    const cvUrl = `${process.env.APPWRITE_ENDPOINT}/storage/buckets/${process.env.APPWRITE_BUCKET_ID}/files/${uploadedFile.$id}/view?project=${process.env.APPWRITE_PROJECT_ID}`
 
-    const { error: updateError } = await supabase
-      .from('jobs')
-      .update({ cv_url: urlData.publicUrl })
-      .eq('id', jobId)
-
-    if (updateError) {
+    try {
+      await databases.updateDocument(
+        process.env.APPWRITE_DATABASE_ID,
+        process.env.APPWRITE_JOBS_COLLECTION_ID,
+        jobId,
+        { cv_url: cvUrl }
+      )
+    } catch (updateError) {
       console.error('cv_url update error:', updateError)
     }
   }

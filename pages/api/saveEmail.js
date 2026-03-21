@@ -1,9 +1,11 @@
-import { createClient } from '@supabase/supabase-js'
+import { Client, Databases, ID } from 'node-appwrite'
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-)
+const client = new Client()
+  .setEndpoint(process.env.APPWRITE_ENDPOINT)
+  .setProject(process.env.APPWRITE_PROJECT_ID)
+  .setKey(process.env.APPWRITE_API_KEY)
+
+const databases = new Databases(client)
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -17,11 +19,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Email is required' })
   }
 
-  const { error } = await supabase
-    .from('newsletter')
-    .insert({ email })
-
-  if (error) {
+  try {
+    await databases.createDocument(
+      process.env.APPWRITE_DATABASE_ID,
+      process.env.APPWRITE_NEWSLETTER_COLLECTION_ID,
+      ID.unique(),
+      { email }
+    )
+  } catch (error) {
     console.error(error)
     return res.status(400).json({ message: error.message })
   }

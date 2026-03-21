@@ -8,36 +8,13 @@ import svg3 from '../public/portfolio/icon3.svg'
 import Link from 'next/link'
 import Banner from '../components/PageBanner'
 
-const backendDomain = 'https://clean-air-backend-production.up.railway.app'
-
 export async function getServerSideProps() {
-
-    try {
-        const res = await fetch(`${process.env.BACK_DOMAIN}/api/portfolio?populate=*`, {
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${process.env.BACK_TOKEN}`,
-            }
-        })
-    
-        const data = await res.json()
-    
-        return {
-          props: {
-            portfolioUrl: process.env.PORTFOLIO_URL
-          },
-        }
+    return {
+        props: {
+            portfolioUrl: process.env.PORTFOLIO_URL || '/pdf/PORTFOLIO.pdf'
+        },
     }
-    catch (error) {
-        console.error(error.message)
-        return {
-            props: {
-                portfolioUrl: process.env.PORTFOLIO_URL || '/pdf/PORTFOLIO.pdf'
-            },
-        }
-    }
-    
-  }
+}
 
 const PortfolioLink = (props)=>{
 

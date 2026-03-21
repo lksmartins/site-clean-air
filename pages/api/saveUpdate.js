@@ -53,6 +53,7 @@ export default async function handler(req, res) {
   try {
     await mailerSend.email.send(emailParams)
   } catch (emailError) {
+    // Row is already saved — log email failure but don't block the response
     console.error('MailerSend error:', emailError)
   }
 

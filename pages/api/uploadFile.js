@@ -20,16 +20,20 @@ export default async function handler(req, res) {
   const form = formidable({ maxFileSize: 10 * 1024 * 1024 })
   let fields, files
   try {
-    const parsed = await form.parse(req)
-    ;[fields, files] = parsed
+    ;[fields, files] = await new Promise((resolve, reject) => {
+      form.parse(req, (err, fields, files) => {
+        if (err) reject(err)
+        else resolve([fields, files])
+      })
+    })
   } catch (err) {
     console.error('Form parse error:', err.message, err.stack)
     return res.status(400).json({ message: err.message })
   }
 
-  const name = fields.name?.[0]
-  const email = fields.email?.[0]
-  const message = fields.message?.[0]
+  const name = fields.name
+  const email = fields.email
+  const message = fields.message
 
   if (!name || !email || !message) {
     return res.status(400).json({ message: 'name, email, and message are required' })
@@ -48,11 +52,14 @@ export default async function handler(req, res) {
   }
 
   const jobId = job.id
-  const cvFile = files.cv?.[0]
+  const cvFile = files.cv
 
   if (cvFile) {
     const fileBuffer = await fs.promises.readFile(cvFile.filepath)
-    const storagePath = `${randomUUID()}-${cvFile.originalFilename}`
+    const safeName = cvFile.originalFilename
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+      .replace(/[^a-zA-Z0-9.\-_]/g, '_')               // replace unsafe chars
+    const storagePath = `${randomUUID()}-${safeName}`
 
     const { error: storageError } = await supabase.storage
       .from('cvs')
@@ -64,7 +71,7 @@ export default async function handler(req, res) {
       // Rollback: delete the job row so the form can be retried cleanly
       await supabase.from('jobs').delete().eq('id', jobId)
       console.error(storageError)
-      return res.status(400).json({ message: 'File upload failed. Please try again.' })
+      return res.status(400).json({ message: storageError.message, details: storageError })
     }
 
     // Clean up formidable's temp file

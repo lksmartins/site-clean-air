@@ -1,4 +1,5 @@
-import { Client, Databases, Storage, ID, InputFile } from 'node-appwrite'
+import { Client, Databases, Storage, ID } from 'node-appwrite'
+import { InputFile } from 'node-appwrite/file'
 import formidable from 'formidable'
 import fs from 'fs'
 
@@ -61,14 +62,15 @@ export default async function handler(req, res) {
     let uploadedFile
     try {
       const fileBuffer = await fs.promises.readFile(cvFile.filepath)
-      const safeName = cvFile.originalFilename
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .replace(/[^a-zA-Z0-9.\-_]/g, '_')
+      const rawName = cvFile.originalFilename || cvFile.newFilename || 'cv'
+      const safeName = rawName
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+        .replace(/[^a-zA-Z0-9.\-_]/g, '_')               // replace unsafe chars
 
       uploadedFile = await storage.createFile(
         process.env.APPWRITE_BUCKET_ID,
         ID.unique(),
-        InputFile.fromBuffer(fileBuffer, safeName)
+        new File([fileBuffer], safeName, { type: cvFile.mimetype })
       )
     } catch (storageError) {
       await fs.promises.unlink(cvFile.filepath).catch(() => {})

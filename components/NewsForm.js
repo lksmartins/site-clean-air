@@ -5,7 +5,7 @@ import styles from './ContactForm/styles/ContactForm.module.css'
 
 export default function Form(props) {
 
-    const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
+    const { fields, apiBody, endpoint='/api/saveUpdate', errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
     const [state, setState] = useState(fields)
 
     const [sentMessage, setSentMessage] = useState('')
@@ -91,7 +91,7 @@ export default function Form(props) {
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
-        fetch(`/api/saveUpdate`, {
+        fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(apiBody(state))

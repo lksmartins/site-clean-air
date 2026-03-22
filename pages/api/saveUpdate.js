@@ -37,24 +37,28 @@ export default async function handler(req, res) {
   }
 
   const sentFrom = new Sender(process.env.MAILERSEND_FROM_EMAIL, 'Clean Air Site')
-  const recipients = [new Recipient(process.env.MAILERSEND_TO_EMAIL, 'Comercial')]
+  const toAddresses = [{ address: process.env.MAILERSEND_TO_EMAIL, name: 'Comercial' }]
   if (process.env.MAILERSEND_ADMIN_EMAIL) {
-    recipients.push(new Recipient(process.env.MAILERSEND_ADMIN_EMAIL, 'Admin'))
+    toAddresses.push({ address: process.env.MAILERSEND_ADMIN_EMAIL, name: 'Admin' })
   }
 
-  const emailParams = new EmailParams()
-    .setFrom(sentFrom)
-    .setTo(recipients)
-    .setSubject(`Nova mensagem de ${name}`)
-    .setHtml(
-      `<p><strong>Nome:</strong> ${escapeHtml(name)}</p>
+  const subject = `Nova mensagem de ${name}`
+  const html = `<p><strong>Nome:</strong> ${escapeHtml(name)}</p>
        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
        <p><strong>Mensagem:</strong> ${escapeHtml(message)}</p>`
-    )
-    .setText(`Nome: ${name}\nEmail: ${email}\nMensagem: ${message}`)
+  const text = `Nome: ${name}\nEmail: ${email}\nMensagem: ${message}`
 
   try {
-    await mailerSend.email.send(emailParams)
+    await Promise.all(toAddresses.map(({ address, name: recipientName }) =>
+      mailerSend.email.send(
+        new EmailParams()
+          .setFrom(sentFrom)
+          .setTo([new Recipient(address, recipientName)])
+          .setSubject(subject)
+          .setHtml(html)
+          .setText(text)
+      )
+    ))
   } catch (emailError) {
     // Row is already saved — log email failure but don't block the response
     console.error('MailerSend error:', emailError)

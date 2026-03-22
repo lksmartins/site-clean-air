@@ -17,7 +17,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@supabase/supabase-js": "^2.99.3",
+    "node-appwrite": "^16.0.0",
     "@svgr/webpack": "^6.3.1",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.2.2",

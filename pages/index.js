@@ -141,8 +141,9 @@ export default function Home() {
                             <div className="mb-3">Preencha o campo abaixo e receba novidades por e-mail.</div>
                             <Form
                                 fields={fields}
+                                endpoint="/api/saveEmail"
                                 apiBody={(state)=>{
-                                        return {  
+                                        return {
                                             email: findValueById(state, 'email')
                                         }
                                     }

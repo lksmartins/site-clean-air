@@ -1,11 +1,12 @@
-import { createClient } from '@supabase/supabase-js'
+import { Client, Databases, ID } from 'node-appwrite'
 import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend'
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-)
+const client = new Client()
+  .setEndpoint(process.env.APPWRITE_ENDPOINT)
+  .setProject(process.env.APPWRITE_PROJECT_ID)
+  .setKey(process.env.APPWRITE_API_KEY)
 
+const databases = new Databases(client)
 const mailerSend = new MailerSend({ apiKey: process.env.MAILERSEND_API_KEY })
 
 const escapeHtml = (str) =>
@@ -23,19 +24,23 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'name, email, and message are required' })
   }
 
-  // Save name + email to updates table (message is not persisted)
-  const { error: dbError } = await supabase
-    .from('updates')
-    .insert({ name, email })
-
-  if (dbError) {
-    console.error(dbError)
-    return res.status(400).json({ message: dbError.message })
+  try {
+    await databases.createDocument(
+      process.env.APPWRITE_DATABASE_ID,
+      process.env.APPWRITE_UPDATES_COLLECTION_ID,
+      ID.unique(),
+      { name, email }
+    )
+  } catch (error) {
+    console.error(error)
+    return res.status(400).json({ message: error.message })
   }
 
-  // Send email notification via MailerSend
   const sentFrom = new Sender(process.env.MAILERSEND_FROM_EMAIL, 'Clean Air Site')
   const recipients = [new Recipient(process.env.MAILERSEND_TO_EMAIL, 'Comercial')]
+  if (process.env.MAILERSEND_ADMIN_EMAIL) {
+    recipients.push(new Recipient(process.env.MAILERSEND_ADMIN_EMAIL, 'Admin'))
+  }
 
   const emailParams = new EmailParams()
     .setFrom(sentFrom)

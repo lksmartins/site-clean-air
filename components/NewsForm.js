@@ -5,7 +5,7 @@ import styles from './ContactForm/styles/ContactForm.module.css'
 
 export default function Form(props) {
 
-    const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
+    const { fields, apiBody, endpoint='/api/saveUpdate', errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
     const [state, setState] = useState(fields)
 
     const [sentMessage, setSentMessage] = useState('')
@@ -18,6 +18,7 @@ export default function Form(props) {
 
     const [ recaptchaHelp, setRecaptchaHelp ] = useState(false)
     const recaptchaRef = useRef()
+    const [recaptchaAvailable, setRecaptchaAvailable] = useState(true)
 
     function handleInputChange(e) {
 
@@ -44,7 +45,7 @@ export default function Form(props) {
         setSentMessage('')
         setError(false)
 
-        if( window.location.hostname != 'localhost'){
+        if( recaptchaAvailable && window.location.hostname != 'localhost'){
             const recaptchaValue = recaptchaRef.current.getValue()
 
             if( recaptchaValue=='' ){
@@ -90,7 +91,7 @@ export default function Form(props) {
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
-        fetch(`/api/saveUpdate`, {
+        fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(apiBody(state))
@@ -158,13 +159,16 @@ export default function Form(props) {
                     )
                 })}
 
+                {recaptchaAvailable && (
                 <div className={`${styles.inputGroup} ${styles.recaptcha}`}>
                     <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
+                        onErrored={() => setRecaptchaAvailable(false)}
                     />
                     <span className={recaptchaHelp ? styles.show : styles.hidden}>Não esqueça de fazer o reCAPTCHA</span>
                 </div>
+                )}
 
                 <div className={`${styles.messageGroup} ${sentMessage==''?styles.hidden:styles.show}`}>
                     <div className={!error?'bg-success text-light':'bg-danger text-light'}>{sentMessage}</div>
